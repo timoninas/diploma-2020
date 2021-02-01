@@ -1,61 +1,46 @@
-#include <iostream>
+#include "SetGraph.hpp"
 
-typedef struct point {
-    double x;
-    double y;
-} point_t;
-
-typedef struct vector {
-    double x;
-    double y;
-    
-    vector(point_t p1, point_t p2) {
-        x = p2.x - p1.x;
-        y = p2.y - p1.y;
+struct cmp {
+    bool operator() (const edge_t &a, const edge_t &b) {
+        return a.angle >= b.angle;
     }
-    
-    vector(double x1, double y1, double x2, double y2) {
-        x = x2 - x1;
-        y = y2 - y1;
-    }
-    
-} vector_t;
-
-typedef struct vertex {
-    point_t point;
-    double angle;
-} vertex_t;
-
-// Get angle between two vectors
-double angleBetweenVectors(vector_t p1, vector_t p2) {
-    // (x1, y1) - vector from (0, 0) to (1, 0)
-    // (x2, y2) - vector from p1 to p2
-    
-    double t = (p1.x * p2.x + p1.y * p2.y) / (sqrt(p1.x * p1.x + p1.y * p1.y) * sqrt(p2.x * p2.x + p2.y * p2.y));
-    if (t < -1) t = -1;
-    if (t > 1) t = 1;
-    return acos(t);
-}
-
-double angleQuadrant(point_t p1, point_t p2) {
-    vector_t initVector(0, 0, 1, 0);
-    vector_t vectowBetweenTwoPoints{p1, p2};
-    double angle = angleBetweenVectors(initVector, vectowBetweenTwoPoints) * 180 / 3.14;
-    
-    if (p2.y < p1.y) {
-        angle = 360 - angle;
-    }
-    
-    std::cout << angle << std::endl;
-    return angle;
-}
+};
 
 // Определение углов разным квадрантам
 // Тк сейчас все значения с положительным знаком
 int main(int argc, const char * argv[]) {
+    
+    std::set<edge_t, cmp> edges;
+    
+    
+    edges.insert({{5, 5}, {5, 8}});
+    edges.insert({{5, 5}, {6, 1}});
+    edges.insert({{5, 5}, {8, 2}});
+    edges.insert({{5, 5}, {1, 2}});
+    edges.insert({{5, 5}, {2, 5}});
+    edges.insert({{5, 5}, {9, 5}});
+    edges.insert({{5, 5}, {5, 1}});
+    
+    
+    for (auto i = edges.begin(); i != edges.end(); i++) {
+        auto item = *i;
+        std::cout << item.point2.x << " " << item.point2.y << " -> " << item.angle << std::endl;
+    }
+    
     vector_t v1{0, 0, 1, 0};
     vector_t v2{2, 2, 3, 4};
-    angleQuadrant({2, 2}, {4, 0});
+    
+//    angleQuadrant({5, 5}, {9, 5});
+//    angleQuadrant({5, 5}, {9, 4});
+//    angleQuadrant({5, 5}, {8, 2});
+//    angleQuadrant({5, 5}, {6, 1});
+//    angleQuadrant({5, 5}, {5, 1});
+//    angleQuadrant({5, 5}, {2, 2});
+//    angleQuadrant({5, 5}, {2, 5});
+//    angleQuadrant({5, 5}, {2, 8});
+//    angleQuadrant({5, 5}, {5, 8});
+//    angleQuadrant({5, 5}, {8, 8});
+    
 //    std::cout << angleBetweenVectors(v1, v2) * 180 / 3.14 << std::endl;
 //    std::cout << angle(1, 0, -1, 1) * 180 / 3.14 << std::endl;
     return 0;
