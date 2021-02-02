@@ -6,10 +6,7 @@
 
 class SetGraph: public IGraph {
 public:
-    SetGraph(size_t verticesCount) {
-        graph.resize(verticesCount);
-        vertices.resize(verticesCount);
-    }
+    SetGraph(): graph(), vertices() { }
     
     SetGraph(const IGraph&);
     
@@ -17,7 +14,9 @@ public:
     
     int VerticesCount() const override;
     
-    void AddVertex(int from, double x, double y) override;
+    void AddVertex(double x, double y) override;
+    
+    void printVertices();
     
     void AddEdge(int from, int to) override;
     

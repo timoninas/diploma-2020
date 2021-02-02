@@ -18,7 +18,7 @@ enum GraphLabels { notvisited = 0, visited = 1, inskeleton = 2 };
 typedef struct point {
     double x;
     double y;
-    point() = default;
+    point() = delete;
     point(double x, double y): x(x), y(y) { }
 } point_t;
 
@@ -39,23 +39,30 @@ typedef struct vector {
 } vector_t;
 
 typedef struct edge {
-    point_t point1;
-    point_t point2;
+    point_t point;
+    int numberVertex;
     double angle;
     GraphLabels label;
-    edge() = default;
-    edge(point_t p1, point_t p2): point1(p1), point2(p2), label(GraphLabels::notvisited) {
+    edge() = delete;
+    edge(point_t p1, point_t p2, int numberVertex): point(p2), numberVertex(numberVertex), label(GraphLabels::notvisited) {
         angle = angleQuadrant(p1.x, p1.y, p2.x, p2.y);
     }
 } edge_t;
 
+struct cmp {
+    bool operator() (const edge_t &a, const edge_t &b) {
+        return a.angle >= b.angle;
+    }
+};
+
 typedef struct vertex {
     point_t point;
+    int numberVertex;
     GraphLabels label;
-    std::vector<edge> edges;
+    std::set<edge_t, cmp> edges;
     
-    vertex(): point({0, 0}), label(GraphLabels::notvisited), edges(0) { }
-    vertex(double x, double y): point({x, y}), label(GraphLabels::notvisited), edges(0) { }
+    vertex() = default;
+    vertex(double x, double y, int numberVertex): point({x, y}), numberVertex(numberVertex), label(GraphLabels::notvisited), edges() { }
     
 } vertex_t;
 

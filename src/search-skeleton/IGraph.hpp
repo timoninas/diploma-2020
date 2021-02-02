@@ -12,7 +12,7 @@
 struct IGraph {
     virtual ~IGraph() {}
     
-    virtual void AddVertex(int from, double x, double y) = 0;
+    virtual void AddVertex(double x, double y) = 0;
     
     virtual void AddEdge(int from, int to) = 0;
     
