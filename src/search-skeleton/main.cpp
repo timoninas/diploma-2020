@@ -66,6 +66,7 @@ void testLogic() {
         graph.AddEdge(22, 23);
         graph.AddEdge(23, 24);
         graph.AddEdge(23, 25);
+        graph.AddEdge(24, 25);
         graph.AddEdge(23, 26);
         graph.AddEdge(23, 27);
         graph.AddEdge(23, 28);
@@ -77,7 +78,7 @@ void testLogic() {
         
         graph.PrintVertices();
         
-        graph.GetNextEdges(26);
+        graph.GetNextEdges(31);
     }
 }
 

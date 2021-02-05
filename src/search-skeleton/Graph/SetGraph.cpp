@@ -17,6 +17,7 @@ void SetGraph::PrintVertices() {
     for (auto item: vertices) {
         std::cout << "\nVertex:" << std::endl;
         std::cout << item.numberVertex << " : (" << item.point.x << "," << item.point.y << ")" << std::endl;
+        GetNextEdges(item.numberVertex);
     }
 }
 
@@ -45,7 +46,7 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
         }
     }
     
-    std::cout << "\nEdges for vertex: " << vertex << std::endl;
+    std::cout << "Edges for vertex: " << vertex << std::endl;
     
     for (auto item: result) {
         std::cout << "" << item.numberVertices.first << "->" << item.numberVertices.second << " : (" << item.points.first.x << "," << item.points.first.y << ") -> (" << item.points.second.x << "," << item.points.second.y << ")" << std::endl;
