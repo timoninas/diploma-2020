@@ -19,8 +19,6 @@ double angleQuadrant(point_t p1, point_t p2) {
     if (p2.y <= p1.y) {
         angle = 360 - angle;
     }
-    
-    std::cout << "(" << p2.x << ";"  << p2.y << ") -> " << angle << std::endl;
     return angle;
 }
 

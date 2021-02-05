@@ -18,16 +18,10 @@ void SetGraph::AddVertex(double x, double y) {
     vertices.push_back(v);
 }
 
-void SetGraph::printVertices() {
+void SetGraph::PrintVertices() {
     for (auto item: vertices) {
-        std::cout << "\n Vertex:" << std::endl;
-        std::cout << item.numberVertex << " | " << item.point.x << " " << item.point.y << std::endl;
-        if (item.edges.size() != 0) {
-            std::cout << "Edges:" << std::endl;
-        }
-        for (auto item2: item.edges) {
-            std::cout << item2.numberVertex << " | " << item2.point.x << " " << item2.point.y << " | " << item2.angle <<  std::endl;
-        }
+        std::cout << "\nVertex:" << std::endl;
+        std::cout << item.numberVertex << " : (" << item.point.x << "," << item.point.y << ")" << std::endl;
     }
 }
 
@@ -38,16 +32,37 @@ void SetGraph::AddEdge(int from, int to) {
     assert(to >= 0);
     point_t p1 = vertices[from].point;
     point_t p2 = vertices[to].point;
-    edge_t e{p1, p2, to};
-    vertices[from].edges.insert(e);
+    edge_t e1{p1, p2, from, to};
+    edges.insert(e1);
 }
 
 std::vector<int> SetGraph::GetNextVertices(int vertex) const {
     std::vector<int> result;
     
-    for (auto val: graph[vertex]) {
-        result.push_back(val);
+    return result;
+}
+
+std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
+    std::set<edge_t, cmpAngle> result;
+    
+    for (auto item: edges) {
+        if (item.numberVertices.first == vertex || item.numberVertices.second == vertex) {
+            if (item.numberVertices.first != vertex) {
+                std::swap(item.numberVertices.first, item.numberVertices.second);
+                std::swap(item.points.first, item.points.second);
+            }
+            
+            result.insert(item);
+        }
     }
+    
+    std::cout << "\nEdges for vertex: " << vertex << std::endl;
+    
+    for (auto item: result) {
+        std::cout << "" << item.numberVertices.first << "->" << item.numberVertices.second << " : (" << item.points.first.x << "," << item.points.first.y << ") -> (" << item.points.second.x << "," << item.points.second.y << ")" << std::endl;
+    }
+    
+    std::cout << std::endl;
     
     return result;
 }
