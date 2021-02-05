@@ -1,4 +1,4 @@
-#include "Structs.hpp"
+#include "AngleOperations.hpp"
 
 // Get angle between two vectors
 double angleBetweenVectors(vector_t p1, vector_t p2) {
@@ -42,8 +42,3 @@ double angleQuadrant(double x1, double y1, double x2, double y2) {
     std::cout << "(" << x2 << ";"  << y2 << ") -> " << angle << std::endl;
     return angle;
 }
-
-//edge::edge(point_t p1, point_t p2): point1(p1),
-//                                    point2(p2),
-//                                    angle(angleQuadrant(p1, p2)),
-//                                    label(notvisited) { }

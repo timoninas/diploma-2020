@@ -2,11 +2,6 @@
 
 SetGraph::SetGraph(const IGraph& sendedGraph) {
     graph.resize(sendedGraph.VerticesCount());
-    for (int i = 0; i < sendedGraph.VerticesCount(); i++) {
-        for (auto child: sendedGraph.GetNextVertices(i)) {
-            graph[i].insert(child);
-        }
-    }
 }
 
 int SetGraph::VerticesCount() const {
@@ -36,12 +31,6 @@ void SetGraph::AddEdge(int from, int to) {
     edges.insert(e1);
 }
 
-std::vector<int> SetGraph::GetNextVertices(int vertex) const {
-    std::vector<int> result;
-    
-    return result;
-}
-
 std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     std::set<edge_t, cmpAngle> result;
     
@@ -63,21 +52,6 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     }
     
     std::cout << std::endl;
-    
-    return result;
-}
-
-std::vector<int> SetGraph::GetPrevVertices(int vertex) const {
-    std::vector<int> result;
-    
-    for(size_t i = 0; i < graph.size(); i++) {
-        for (auto child: graph[i]) {
-            if (child == vertex) {
-                result.push_back(i);
-                break;
-            }
-        }
-    }
     
     return result;
 }

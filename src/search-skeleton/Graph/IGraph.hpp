@@ -9,6 +9,10 @@
 #include <set>
 #include <iostream>
 
+#include "AngleOperations.hpp"
+#include "../Model/Edge/Edge.hpp"
+#include "../Model/Vertex/Vertex.hpp"
+
 struct IGraph {
     virtual ~IGraph() {}
     
@@ -18,8 +22,7 @@ struct IGraph {
     
     virtual int VerticesCount() const = 0;
     
-    virtual std::vector<int> GetNextVertices(int vertex) const = 0;
-    virtual std::vector<int> GetPrevVertices(int vertex) const = 0;
+    virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
 };
 
 #endif /* IGraph_hpp */

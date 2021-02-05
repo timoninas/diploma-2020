@@ -1,7 +1,5 @@
 #include "SetGraph.hpp"
 
-
-
 // Определение углов разным квадрантам
 // Тк сейчас все значения с положительным знаком
 int main(int argc, const char * argv[]) {
