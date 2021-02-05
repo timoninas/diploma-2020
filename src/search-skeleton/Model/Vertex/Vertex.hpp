@@ -14,6 +14,8 @@ typedef struct vertex {
     vertex() = default;
     vertex(double x, double y, int numberVertex): point({x, y}), numberVertex(numberVertex), label(GraphLabels::notvisited) { }
     
+    vertex(point_t p, int numberVertex): point(p), numberVertex(numberVertex), label(GraphLabels::notvisited) { }
+    
 } vertex_t;
 
 #endif /* Vertex_hpp */
