@@ -76,9 +76,7 @@ void testLogic() {
         graph.AddEdge(26, 31);
         graph.AddEdge(26, 32);
         
-        graph.PrintVertices();
-        
-        graph.GetNextEdges(31);
+        graph.SearchSkeleton(28, 0);
     }
 }
 

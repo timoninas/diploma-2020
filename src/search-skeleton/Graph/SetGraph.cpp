@@ -13,7 +13,7 @@ void SetGraph::AddVertex(double x, double y) {
     vertices.push_back(v);
 }
 
-void SetGraph::PrintVertices() {
+void SetGraph::PrintVertices() const {
     for (auto item: vertices) {
         std::cout << "\nVertex:" << std::endl;
         std::cout << item.numberVertex << " : (" << item.point.x << "," << item.point.y << ")" << std::endl;
@@ -55,4 +55,17 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     std::cout << std::endl;
     
     return result;
+}
+
+void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
+    PrintVertices();
+    
+    auto edges = GetNextEdges(inputVertex);
+    auto currentVertex = vertices[inputVertex];
+    currentVertex.label = GraphLabels::visited;
+    
+    for (auto iter = edges.cbegin(); iter != edges.cend() || currentVertex.numberVertex == outputVertex; iter++) {
+        std::cout << "KEK" << std::endl;
+        std::cout << (*iter).points.second.x << " " << (*iter).points.second.y << std::endl;
+    }
 }

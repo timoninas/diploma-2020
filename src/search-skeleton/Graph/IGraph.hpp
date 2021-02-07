@@ -22,6 +22,10 @@ struct IGraph {
     
     virtual int VerticesCount() const = 0;
     
+    virtual void PrintVertices() const = 0;
+    
+    virtual void SearchSkeleton(int inputVertex, int outputVertex) = 0;
+    
     virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
 };
 
