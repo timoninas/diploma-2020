@@ -52,13 +52,13 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
         }
     }
     
-    std::cout << "Edges for vertex: " << vertex << std::endl;
-    
-    for (auto item: result) {
-        std::cout << "" << item.numberVertices.first << "->" << item.numberVertices.second << " : (" << item.points.first.x << "," << item.points.first.y << ") -> (" << item.points.second.x << "," << item.points.second.y << ")" << std::endl;
-    }
-    
-    std::cout << std::endl;
+//    std::cout << "Edges for vertex: " << vertex << std::endl;
+//
+//    for (auto item: result) {
+//        std::cout << "" << item.numberVertices.first << "->" << item.numberVertices.second << " : (" << item.points.first.x << "," << item.points.first.y << ") -> (" << item.points.second.x << "," << item.points.second.y << ")" << std::endl;
+//    }
+//    
+//    std::cout << std::endl;
     
     return result;
 }
@@ -67,18 +67,64 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     PrintVertices();
     
     auto edges = GetNextEdges(inputVertex);
+    auto initialStartVertex = GetVertex(inputVertex);
     auto currentVertex = GetVertex(inputVertex);
-    currentVertex.label = GraphLabels::visited;
+    initialStartVertex.label = GraphLabels::visited;
     
-    for (auto iter = edges.cbegin(); iter != edges.cend() || currentVertex.numberVertex == outputVertex; iter++) {
+    for (auto iter = edges.cbegin(); iter != edges.cend(); iter++) {
         auto currentEdge = (*iter);
+        if (currentEdge.label != GraphLabels::notvisited) continue;
+        
         auto nextVertex = GetVertex(currentEdge.numberVertices.second);
-        if (currentEdge.label == GraphLabels::notvisited) {
-            auto nextEndVertex = LeftTraversal(currentVertex, nextVertex);
+        currentVertex = LeftTraversal(initialStartVertex, nextVertex, currentEdge, outputVertex);
+        
+        if (currentVertex.numberVertex == inputVertex) {
+            // Если встретился тупик, то ничего не делаем
+            // TODO: Нужна проверка на цикл. Если он встретился,
+            // Тогда ребра между циклом пометить посещенными
+            std::cout << "FEFE\n";
+        } else if (currentVertex.numberVertex == outputVertex) {
+            // Если дошли до выходной вершины, то выходим из цикла
+            std::cout << "KEKE\n";
+            break;
+        } else {
+            // Сюда не должны зайти
+            assert(1 < 0);
         }
     }
 }
 
-const vertex_t& SetGraph::LeftTraversal(const vertex_t& currentVertex, const vertex_t& nextVertex) {
+const vertex_t& SetGraph::LeftTraversal(vertex_t& currentVertex, vertex_t& nextVertex, edge_t& currentEdge, const int& stopVertexNumber) {
+    std::cout << "LOLO" << std::endl;
+    currentEdge.label = GraphLabels::visited;
+    nextVertex.label = GraphLabels::visited;
+    
+    auto edges = GetNextEdges(nextVertex.numberVertex);
+    
+    for (auto iter = edges.cbegin(); iter != edges.cend(); iter++) {
+        if (nextVertex.numberVertex == stopVertexNumber) {
+            std::cout << "KYMA\n";
+            assert(1 < 0);
+        } // 23 25 25 25 24 23
+        auto currentEdge = (*iter);
+        auto nextNextVertex = GetVertex(currentEdge.numberVertices.second);
+        std::cout << nextVertex.numberVertex << " " << nextNextVertex.numberVertex << std::endl;
+        auto gettingVertex = LeftTraversal(nextVertex, nextNextVertex, currentEdge, stopVertexNumber);
+        if (gettingVertex.numberVertex == currentVertex.numberVertex) {
+            // Если встретился тупик, то ничего не делаем
+            // TODO: Нужна проверка на цикл. Если он встретился,
+            // Тогда ребра между циклом пометить посещенными
+            std::cout << "FEFE\n";
+            break;
+        } else if (currentVertex.numberVertex == stopVertexNumber) {
+            // Если дошли до выходной вершины, то выходим из цикла
+            std::cout << "KEKE\n";
+            break;
+        } else {
+            // Сюда не должны зайти
+            std::cout << "MAMA\n";
+        }
+    }
+    
     return GetVertex(currentVertex.numberVertex);
 }

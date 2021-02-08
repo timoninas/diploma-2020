@@ -30,7 +30,7 @@ struct IGraph {
     
     virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
     
-    virtual const vertex_t& LeftTraversal(const vertex_t& currentVertex, const vertex_t& nextVertex) = 0;
+    virtual const vertex_t& LeftTraversal(vertex_t& currentVertex, vertex_t& nextVertex, edge_t& currentEdge, const int& stopVertexNumber) = 0;
 };
 
 #endif /* IGraph_hpp */

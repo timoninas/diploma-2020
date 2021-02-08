@@ -25,7 +25,7 @@ public:
     
     std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const override;
     
-    const vertex_t& LeftTraversal(const vertex_t& currentVertex, const vertex_t& nextVertex) override;
+    const vertex_t& LeftTraversal(vertex_t& currentVertex, vertex_t& nextVertex, edge_t& currentEdge, const int& stopVertexNumber) override;
     
 private:
     std::vector< std::unordered_set< int > > graph;
