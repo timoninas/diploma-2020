@@ -15,13 +15,17 @@ public:
     
     void AddVertex(double x, double y) override;
     
-    void PrintVertices() const override;
-    
     void AddEdge(int from, int to) override;
+    
+    const vertex_t& GetVertex(int at) override;
+    
+    void PrintVertices() const override;
     
     void SearchSkeleton(int inputVertex, int outputVertex) override;
     
     std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const override;
+    
+    const vertex_t& LeftTraversal(const vertex_t& currentVertex, const vertex_t& nextVertex) override;
     
 private:
     std::vector< std::unordered_set< int > > graph;

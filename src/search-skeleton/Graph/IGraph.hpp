@@ -20,6 +20,8 @@ struct IGraph {
     
     virtual void AddEdge(int from, int to) = 0;
     
+    virtual const vertex_t& GetVertex(int at) = 0;
+    
     virtual int VerticesCount() const = 0;
     
     virtual void PrintVertices() const = 0;
@@ -27,6 +29,8 @@ struct IGraph {
     virtual void SearchSkeleton(int inputVertex, int outputVertex) = 0;
     
     virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
+    
+    virtual const vertex_t& LeftTraversal(const vertex_t& currentVertex, const vertex_t& nextVertex) = 0;
 };
 
 #endif /* IGraph_hpp */

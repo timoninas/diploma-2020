@@ -32,6 +32,12 @@ void SetGraph::AddEdge(int from, int to) {
     edges.insert(e1);
 }
 
+const vertex_t& SetGraph::GetVertex(int at) {
+    assert(at > 0);
+    assert(at < vertices.size());
+    return vertices[at];
+}
+
 std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     std::set<edge_t, cmpAngle> result;
     
@@ -61,11 +67,18 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     PrintVertices();
     
     auto edges = GetNextEdges(inputVertex);
-    auto currentVertex = vertices[inputVertex];
+    auto currentVertex = GetVertex(inputVertex);
     currentVertex.label = GraphLabels::visited;
     
     for (auto iter = edges.cbegin(); iter != edges.cend() || currentVertex.numberVertex == outputVertex; iter++) {
-        std::cout << "KEK" << std::endl;
-        std::cout << (*iter).points.second.x << " " << (*iter).points.second.y << std::endl;
+        auto currentEdge = (*iter);
+        auto nextVertex = GetVertex(currentEdge.numberVertices.second);
+        if (currentEdge.label == GraphLabels::notvisited) {
+            auto nextEndVertex = LeftTraversal(currentVertex, nextVertex);
+        }
     }
+}
+
+const vertex_t& SetGraph::LeftTraversal(const vertex_t& currentVertex, const vertex_t& nextVertex) {
+    return GetVertex(currentVertex.numberVertex);
 }
