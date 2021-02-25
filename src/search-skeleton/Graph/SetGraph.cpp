@@ -28,12 +28,12 @@ void SetGraph::AddEdge(int from, int to) {
     assert(to >= 0);
     point_t p1 = vertices[from].point;
     point_t p2 = vertices[to].point;
-    edge_t e1{p1, p2, from, to};
-    edges.insert(e1);
+    edge_t e1{int(edges.size()), p1, p2, from, to};
+    edges.push_back(e1);
 }
 
 const vertex_t& SetGraph::GetVertex(int at) {
-    assert(at > 0);
+    assert(at >= 0);
     assert(at < vertices.size());
     return vertices[at];
 }
@@ -52,14 +52,6 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
         }
     }
     
-//    std::cout << "Edges for vertex: " << vertex << std::endl;
-//
-//    for (auto item: result) {
-//        std::cout << "" << item.numberVertices.first << "->" << item.numberVertices.second << " : (" << item.points.first.x << "," << item.points.first.y << ") -> (" << item.points.second.x << "," << item.points.second.y << ")" << std::endl;
-//    }
-//    
-//    std::cout << std::endl;
-    
     return result;
 }
 
@@ -69,7 +61,7 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     auto edges = GetNextEdges(inputVertex);
     auto initialStartVertex = GetVertex(inputVertex);
     auto currentVertex = GetVertex(inputVertex);
-    initialStartVertex.label = GraphLabels::visited;
+    initialStartVertex.visited();
     
     for (auto iter = edges.cbegin(); iter != edges.cend(); iter++) {
         auto currentEdge = (*iter);
@@ -95,34 +87,45 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
 }
 
 const vertex_t& SetGraph::LeftTraversal(vertex_t& currentVertex, vertex_t& nextVertex, edge_t& currentEdge, const int& stopVertexNumber) {
-    std::cout << "LOLO" << std::endl;
-    currentEdge.label = GraphLabels::visited;
-    nextVertex.label = GraphLabels::visited;
     
-    auto edges = GetNextEdges(nextVertex.numberVertex);
+    std::stack<vertex_t> vertexStack;
+    vertexStack.push(currentVertex);
     
-    for (auto iter = edges.cbegin(); iter != edges.cend(); iter++) {
-        if (nextVertex.numberVertex == stopVertexNumber) {
-            std::cout << "KYMA\n";
-            assert(1 < 0);
-        } // 23 25 25 25 24 23
-        auto currentEdge = (*iter);
-        auto nextNextVertex = GetVertex(currentEdge.numberVertices.second);
-        std::cout << nextVertex.numberVertex << " " << nextNextVertex.numberVertex << std::endl;
-        auto gettingVertex = LeftTraversal(nextVertex, nextNextVertex, currentEdge, stopVertexNumber);
-        if (gettingVertex.numberVertex == currentVertex.numberVertex) {
-            // Если встретился тупик, то ничего не делаем
-            // TODO: Нужна проверка на цикл. Если он встретился,
-            // Тогда ребра между циклом пометить посещенными
-            std::cout << "FEFE\n";
-            break;
-        } else if (currentVertex.numberVertex == stopVertexNumber) {
-            // Если дошли до выходной вершины, то выходим из цикла
-            std::cout << "KEKE\n";
-            break;
+    while(!vertexStack.empty()) {
+        auto popedVertex = vertexStack.top();
+        std::cout << popedVertex.point.x << " " << popedVertex.point.y << " " << popedVertex.label << std::endl;
+        
+        auto nextEdges = GetNextEdges(popedVertex.numberVertex);
+        bool isFinded = false;
+        
+        for (auto iter = nextEdges.cbegin(); iter != nextEdges.cend(); iter++) {
+            
+            auto iteratedEdge = (*iter);
+            
+            if (iteratedEdge.isNotvisited()) {
+                edges[iteratedEdge.numberEdge].label = GraphLabels::visited;
+                
+//                auto find = edges.
+                
+                auto tmpVertex = GetVertex(iteratedEdge.numberVertices.second);
+                
+                if (tmpVertex.isNotvisited()) {
+                    vertices[tmpVertex.numberVertex].label = GraphLabels::visited;
+                    vertexStack.push(tmpVertex);
+                    isFinded = true;
+                    break;
+                }
+            }
+        }
+        
+        if (isFinded) {
+            auto poped = vertexStack.top();
+            if (poped.numberVertex == stopVertexNumber) {
+                return GetVertex(stopVertexNumber);
+            }
+            std::cout << "Finded" << std::endl;
         } else {
-            // Сюда не должны зайти
-            std::cout << "MAMA\n";
+            vertexStack.pop();
         }
     }
     

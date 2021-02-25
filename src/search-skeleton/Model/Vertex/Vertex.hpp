@@ -15,7 +15,30 @@ typedef struct vertex {
     vertex(double x, double y, int numberVertex): point({x, y}), numberVertex(numberVertex), label(GraphLabels::notvisited) { }
     
     vertex(point_t p, int numberVertex): point(p), numberVertex(numberVertex), label(GraphLabels::notvisited) { }
+
+    void visited() {
+        label = GraphLabels::visited;
+    }
     
+    bool isVisited() {
+        return label == GraphLabels::visited;
+    }
+    
+    void notvisited() {
+        label = GraphLabels::notvisited;
+    }
+    
+    bool isNotvisited() {
+        return label == GraphLabels::notvisited;
+    }
+    
+    void inskeleton() {
+        label = GraphLabels::inskeleton;
+    }
+    
+    bool isInskeleton() {
+        return label == GraphLabels::inskeleton;
+    }
 } vertex_t;
 
 #endif /* Vertex_hpp */

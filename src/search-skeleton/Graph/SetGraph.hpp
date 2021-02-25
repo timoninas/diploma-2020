@@ -30,7 +30,7 @@ public:
 private:
     std::vector< std::unordered_set< int > > graph;
     std::vector< vertex_t > vertices;
-    std::set< edge_t, cmp > edges;
+    std::vector< edge_t > edges;
 };
 
 #endif /* SetGraph_hpp */

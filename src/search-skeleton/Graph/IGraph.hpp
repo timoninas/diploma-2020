@@ -8,6 +8,7 @@
 #include <utility>
 #include <set>
 #include <iostream>
+#include <stack>
 
 #include "AngleOperations.hpp"
 #include "../Model/Edge/Edge.hpp"
