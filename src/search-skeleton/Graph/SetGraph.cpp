@@ -61,14 +61,20 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     auto edges = GetNextEdges(inputVertex);
     auto initialStartVertex = GetVertex(inputVertex);
     auto currentVertex = GetVertex(inputVertex);
-    initialStartVertex.visited();
+    vertices[inputVertex].label = GraphLabels::visited;
     
     for (auto iter = edges.cbegin(); iter != edges.cend(); iter++) {
         auto currentEdge = (*iter);
         if (currentEdge.label != GraphLabels::notvisited) continue;
         
         auto nextVertex = GetVertex(currentEdge.numberVertices.second);
-        currentVertex = LeftTraversal(initialStartVertex, nextVertex, currentEdge, outputVertex);
+        auto resultTraversal = LeftTraversal(initialStartVertex, nextVertex, currentEdge, outputVertex);
+        
+        if (resultTraversal->empty()) {
+            currentVertex = initialStartVertex;
+        } else {
+            currentVertex = resultTraversal->top();
+        }
         
         if (currentVertex.numberVertex == inputVertex) {
             // Если встретился тупик, то ничего не делаем
@@ -86,13 +92,13 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     }
 }
 
-const vertex_t& SetGraph::LeftTraversal(vertex_t& currentVertex, vertex_t& nextVertex, edge_t& currentEdge, const int& stopVertexNumber) {
+std::shared_ptr<std::stack<vertex_t>> SetGraph::LeftTraversal(vertex_t& currentVertex, vertex_t& nextVertex, edge_t& currentEdge, const int& stopVertexNumber) {
     
-    std::stack<vertex_t> vertexStack;
-    vertexStack.push(currentVertex);
+    std::shared_ptr< std::stack<vertex_t> >vertexStack( new std::stack<vertex_t>() );
+    vertexStack->push(currentVertex);
     
-    while(!vertexStack.empty()) {
-        auto popedVertex = vertexStack.top();
+    while(!vertexStack->empty()) {
+        auto popedVertex = vertexStack->top();
         std::cout << popedVertex.point.x << " " << popedVertex.point.y << " " << popedVertex.label << std::endl;
         
         auto nextEdges = GetNextEdges(popedVertex.numberVertex);
@@ -111,7 +117,8 @@ const vertex_t& SetGraph::LeftTraversal(vertex_t& currentVertex, vertex_t& nextV
                 
                 if (tmpVertex.isNotvisited()) {
                     vertices[tmpVertex.numberVertex].label = GraphLabels::visited;
-                    vertexStack.push(tmpVertex);
+                    tmpVertex.label = GraphLabels::visited;
+                    vertexStack->push(tmpVertex);
                     isFinded = true;
                     break;
                 }
@@ -119,15 +126,16 @@ const vertex_t& SetGraph::LeftTraversal(vertex_t& currentVertex, vertex_t& nextV
         }
         
         if (isFinded) {
-            auto poped = vertexStack.top();
+            auto poped = vertexStack->top();
             if (poped.numberVertex == stopVertexNumber) {
-                return GetVertex(stopVertexNumber);
+                std::cout << "STACK:" << std::endl;
+                return vertexStack;
             }
             std::cout << "Finded" << std::endl;
         } else {
-            vertexStack.pop();
+            vertexStack->pop();
         }
     }
     
-    return GetVertex(currentVertex.numberVertex);
+    return vertexStack;
 }

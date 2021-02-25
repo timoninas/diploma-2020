@@ -31,7 +31,7 @@ struct IGraph {
     
     virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
     
-    virtual const vertex_t& LeftTraversal(vertex_t& currentVertex, vertex_t& nextVertex, edge_t& currentEdge, const int& stopVertexNumber) = 0;
+    virtual std::shared_ptr<std::stack<vertex_t>> LeftTraversal(vertex_t& currentVertex, vertex_t& nextVertex, edge_t& currentEdge, const int& stopVertexNumber) = 0;
 };
 
 #endif /* IGraph_hpp */
