@@ -25,7 +25,7 @@ public:
     
     std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const override;
     
-    std::shared_ptr<std::stack<vertex_t>> LeftTraversal(vertex_t& currentVertex, vertex_t& nextVertex, edge_t& currentEdge, const int& stopVertexNumber) override;
+    std::shared_ptr<std::stack<vertex_t>> LeftTraversal(const int& currentVertexNumber, const int& stopVertexNumber) override;
     
 private:
     std::vector< std::unordered_set< int > > graph;
