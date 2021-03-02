@@ -97,12 +97,11 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
         }
     }
     
-    while(!resultTraversal->empty()) {
-        auto poped = resultTraversal->back();
-        resultTraversal->pop_back();
-        vertices[poped.numberVertex].label = GraphLabels::inskeleton;
-        poped.label = GraphLabels::inskeleton;
-        std::cout << "(" << poped.numberVertex << ") " << poped.point.x << " " << poped.point.y << " [" << poped.label << std::endl;
+    // Отметить все вершине в стеке, как в остове
+    for (auto iter = resultTraversal->begin(); iter != resultTraversal->end(); iter++) {
+        auto currentNumberVertex = (*iter).numberVertex;
+        (*iter).label = GraphLabels::inskeleton;
+        vertices[currentNumberVertex].label = GraphLabels::inskeleton;
     }
 }
 
