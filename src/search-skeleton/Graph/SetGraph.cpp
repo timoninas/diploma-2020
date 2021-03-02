@@ -38,6 +38,12 @@ const vertex_t& SetGraph::GetVertex(int at) {
     return vertices[at];
 }
 
+const edge_t& SetGraph::GetEdge(int at) {
+    assert(at >= 0);
+    assert(at < edges.size());
+    return edges[at];
+}
+
 std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     std::set<edge_t, cmpAngle> result;
     
@@ -62,18 +68,18 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     auto initialStartVertex = inputVertex;
     auto currentVertex = inputVertex;
     vertices[inputVertex].label = GraphLabels::visited;
+    std::shared_ptr<std::deque<vertex_t>> resultTraversal;
     
     for (auto iter = edges.cbegin(); iter != edges.cend(); iter++) {
         auto currentEdge = (*iter);
         if (currentEdge.label != GraphLabels::notvisited) continue;
         
-        auto nextVertex = GetVertex(currentEdge.numberVertices.second);
-        auto resultTraversal = LeftTraversal(currentVertex, outputVertex);
+        resultTraversal = LeftTraversal(currentVertex, outputVertex);
         
         if (resultTraversal->empty()) {
             currentVertex = initialStartVertex;
         } else {
-            currentVertex = resultTraversal->top().numberVertex;
+            currentVertex = resultTraversal->back().numberVertex;
         }
         
         if (currentVertex == inputVertex) {
@@ -83,22 +89,30 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
             std::cout << "FEFE\n";
         } else if (currentVertex == outputVertex) {
             // Если дошли до выходной вершины, то выходим из цикла
-            std::cout << "KEKE\n";
+            std::cout << "FINDED TRAVERSAL\n";
             break;
         } else {
             // Сюда не должны зайти
             assert(1 < 0);
         }
     }
+    
+    while(!resultTraversal->empty()) {
+        auto poped = resultTraversal->back();
+        resultTraversal->pop_back();
+        vertices[poped.numberVertex].label = GraphLabels::inskeleton;
+        poped.label = GraphLabels::inskeleton;
+        std::cout << "(" << poped.numberVertex << ") " << poped.point.x << " " << poped.point.y << " [" << poped.label << std::endl;
+    }
 }
 
-std::shared_ptr<std::stack<vertex_t>> SetGraph::LeftTraversal(const int& currentVertexNumber, const int& stopVertexNumber) {
+std::shared_ptr<std::deque<vertex_t>> SetGraph::LeftTraversal(const int& currentVertexNumber, const int& stopVertexNumber) {
     
-    std::shared_ptr< std::stack<vertex_t> >vertexStack( new std::stack<vertex_t>() );
-    vertexStack->push(GetVertex(currentVertexNumber));
+    std::shared_ptr< std::deque<vertex_t> >vertexStack( new std::deque<vertex_t>() );
+    vertexStack->push_back((GetVertex(currentVertexNumber)));
     
     while(!vertexStack->empty()) {
-        auto popedVertex = vertexStack->top();
+        auto popedVertex = vertexStack->back();
         std::cout << popedVertex.point.x << " " << popedVertex.point.y << " " << popedVertex.label << std::endl;
         
         auto nextEdges = GetNextEdges(popedVertex.numberVertex);
@@ -111,32 +125,62 @@ std::shared_ptr<std::stack<vertex_t>> SetGraph::LeftTraversal(const int& current
             if (iteratedEdge.isNotvisited()) {
                 edges[iteratedEdge.numberEdge].label = GraphLabels::visited;
                 
-//                auto find = edges.
-                
                 auto tmpVertex = GetVertex(iteratedEdge.numberVertices.second);
                 
                 if (tmpVertex.isNotvisited()) {
                     vertices[tmpVertex.numberVertex].label = GraphLabels::visited;
                     tmpVertex.label = GraphLabels::visited;
-                    vertexStack->push(tmpVertex);
+                    vertexStack->push_back(tmpVertex);
                     isFinded = true;
                     break;
+                } else {
+                    // CASE с встречой цикла
+                    visitInnerEdges(tmpVertex.numberVertex, iteratedEdge.numberEdge);
                 }
             }
-            
-            edges[iteratedEdge.numberEdge].label = GraphLabels::visited;
         }
         
         if (isFinded) {
-            auto poped = vertexStack->top();
+            auto poped = vertexStack->back();
             if (poped.numberVertex == stopVertexNumber) {
                 std::cout << "STACK:" << std::endl;
                 return vertexStack;
             }
         } else {
-            vertexStack->pop();
+            vertexStack->pop_back();
         }
     }
     
     return vertexStack;
 }
+
+void SetGraph::visitInnerEdges(const int& repeatedVertex, const int& numberEdge) {
+    auto vertex = GetVertex(repeatedVertex);
+    auto edge = GetEdge(numberEdge);
+    std::cout << "NEXT VERTEX: " << vertex.numberVertex << " " << vertex.point.x << " " << vertex.point.y << std::endl;
+    std::cout << "CURR EDGE: " << edge.numberEdge << " " << edge.numberVertices.first << " " << edge.numberVertices.second << std::endl;
+    
+    auto nextEdges = GetNextEdges(repeatedVertex);
+    
+    auto isFind = false;
+    for (auto iter = nextEdges.rbegin(); iter != nextEdges.rend(); iter++) {
+        auto tmpEdge = (*iter);
+        std::cout << "from: " << tmpEdge.numberVertices.first << " " << tmpEdge.points.first.x << " " << tmpEdge.points.first.y << std::endl;
+        std::cout << "to: " << tmpEdge.numberVertices.second << " " << tmpEdge.points.second.x << " " << tmpEdge.points.second.y << std::endl << std::endl;
+        
+        if (isFind == true) {
+            if (tmpEdge.isVisited()) {
+                std::cout << "FINDED CYCLE 2 EDGE " << tmpEdge.numberVertices.first << " " << tmpEdge.numberVertices.second << std::endl;
+//                break;
+            }
+        } else {
+            if (tmpEdge.numberEdge == numberEdge) {
+                std::cout << "FINDED CYCLE 1 EDGE " << tmpEdge.numberVertices.first << " " << tmpEdge.numberVertices.second << std::endl;
+                isFind = true;
+            }
+        }
+    }
+}
+
+
+

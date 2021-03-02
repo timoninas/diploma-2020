@@ -77,7 +77,7 @@ void testLogic() {
         graph.AddEdge(26, 32);
         
         // 23
-        graph.SearchSkeleton(30, 0);
+        graph.SearchSkeleton(26, 0);
     }
 }
 

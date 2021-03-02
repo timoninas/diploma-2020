@@ -17,20 +17,28 @@ public:
     
     void AddEdge(int from, int to) override;
     
-    const vertex_t& GetVertex(int at) override;
-    
     void PrintVertices() const override;
     
     void SearchSkeleton(int inputVertex, int outputVertex) override;
     
-    std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const override;
     
-    std::shared_ptr<std::stack<vertex_t>> LeftTraversal(const int& currentVertexNumber, const int& stopVertexNumber) override;
+    
+    
     
 private:
     std::vector< std::unordered_set< int > > graph;
     std::vector< vertex_t > vertices;
     std::vector< edge_t > edges;
+    
+    const vertex_t& GetVertex(int at) override;
+    
+    const edge_t& GetEdge(int at) override;
+    
+    std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const override;
+    
+    std::shared_ptr<std::deque<vertex_t>> LeftTraversal(const int& currentVertexNumber, const int& stopVertexNumber) override;
+    
+    void visitInnerEdges(const int& repeatedVertex, const int& numberEdge) override;
 };
 
 #endif /* SetGraph_hpp */

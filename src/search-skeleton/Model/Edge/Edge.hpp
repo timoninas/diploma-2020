@@ -25,24 +25,13 @@ typedef struct edge {
                                             points(std::make_pair(p1, p2)),
                                             numberVertices(std::make_pair(numberVertex1, numberVertex2)),
                                             label(GraphLabels::notvisited) { }
-    void visited() {
-        label = GraphLabels::visited;
-    }
-    
-    bool isVisited() {
-        return label == GraphLabels::visited;
-    }
-    
-    void notvisited() {
-        label = GraphLabels::notvisited;
-    }
     
     bool isNotvisited() {
         return label == GraphLabels::notvisited;
     }
     
-    void inskeleton() {
-        label = GraphLabels::inskeleton;
+    bool isVisited() {
+        return label == GraphLabels::inskeleton;
     }
     
     bool isInskeleton() {
