@@ -1,6 +1,7 @@
 #include "SetGraph.hpp"
 
 void testLogic() {
+    // Graph 1
     {
         SetGraph graph;
         
@@ -76,8 +77,74 @@ void testLogic() {
         graph.AddEdge(26, 31);
         graph.AddEdge(26, 32);
         
-        // 23
-        graph.SearchSkeleton(26, 0);
+//        graph.SearchSkeleton(26, 0);
+    }
+    
+    // Graph 2
+    {
+        SetGraph graph;
+        
+        graph.AddVertex(0, 0); // 0
+        graph.AddVertex(4, 3); // 1
+        graph.AddVertex(8, 4); // 2
+        graph.AddVertex(12, 4); // 3
+        graph.AddVertex(10, 8); // 4
+        graph.AddVertex(0, 4); // 5
+        graph.AddVertex(-3, 3); // 6
+        graph.AddVertex(-4, 0); // 7
+        graph.AddVertex(-7, -2); // 8
+        graph.AddVertex(-6, 3); // 9
+        graph.AddVertex(-9, 3); // 10
+        graph.AddVertex(-5, 6); // 11
+        graph.AddVertex(-7, 8); // 12
+        graph.AddVertex(-3, 9); // 13
+        graph.AddVertex(-3, -3); // 14
+        graph.AddVertex(-6, -6); // 15
+        graph.AddVertex(-7, -10); // 16
+        graph.AddVertex(1, -4); // 17
+        graph.AddVertex(1, -9); // 18
+        graph.AddVertex(3, -11); // 19
+        graph.AddVertex(6, -9); // 20
+        graph.AddVertex(5, -5); // 21
+        graph.AddVertex(3, -2); // 22
+        graph.AddVertex(8, 0); // 23
+        graph.AddVertex(10, 4.5); // 24
+        graph.AddVertex(-15, -13); // 25
+        graph.AddVertex(-10, -13); // 26
+        
+        graph.PrintVertices();
+        
+        graph.AddEdge(0, 1);
+        graph.AddEdge(1, 2);
+        graph.AddEdge(2, 3);
+        graph.AddEdge(3, 4);
+        graph.AddEdge(2, 4);
+        graph.AddEdge(0, 5);
+        graph.AddEdge(0, 6);
+        graph.AddEdge(5, 6);
+        graph.AddEdge(0, 7);
+        graph.AddEdge(7, 8);
+        graph.AddEdge(7, 9);
+        graph.AddEdge(9, 10);
+        graph.AddEdge(9, 11);
+        graph.AddEdge(11, 12);
+        graph.AddEdge(12, 13);
+        graph.AddEdge(13, 11);
+        graph.AddEdge(0, 14);
+        graph.AddEdge(14, 15);
+        graph.AddEdge(15, 16);
+        graph.AddEdge(0, 17);
+        graph.AddEdge(17, 21);
+        graph.AddEdge(21, 20);
+        graph.AddEdge(20, 19);
+        graph.AddEdge(19, 18);
+        graph.AddEdge(18, 17);
+        graph.AddEdge(0, 22);
+        graph.AddEdge(22, 23);
+        graph.AddEdge(23, 24);
+        graph.AddEdge(25, 26);
+        
+        graph.SearchSkeleton(5, 3);
     }
 }
 

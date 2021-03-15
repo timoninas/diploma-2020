@@ -74,6 +74,7 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
         auto currentEdge = (*iter);
         if (currentEdge.label != GraphLabels::notvisited) continue;
         
+//        resultTraversal->clear();
         resultTraversal = LeftTraversal(currentVertex, outputVertex);
         
         if (resultTraversal->empty()) {
@@ -86,10 +87,10 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
             // Если встретился тупик, то ничего не делаем
             // TODO: Нужна проверка на цикл. Если он встретился,
             // Тогда ребра между циклом пометить посещенными
-            std::cout << "FEFE\n";
+            std::cout << "NOT FINDED PATH -> NEXT ITERATION" << std::endl;
         } else if (currentVertex == outputVertex) {
             // Если дошли до выходной вершины, то выходим из цикла
-            std::cout << "FINDED TRAVERSAL\n";
+            std::cout << "FIND TRAVERSAL -> BREAK LOOP" << std::endl;
             break;
         } else {
             // Сюда не должны зайти
@@ -97,9 +98,14 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
         }
     }
     
+    if (resultTraversal->empty()) {
+        std::cout << "NON-CONNECTED GRAPH" << std::endl;
+    }
+    
     // Отметить все вершине в стеке, как в остове
     for (auto iter = resultTraversal->begin(); iter != resultTraversal->end(); iter++) {
         auto currentNumberVertex = (*iter).numberVertex;
+        std::cout << (*iter).point.x << " " << (*iter).point.y << std::endl;
         (*iter).label = GraphLabels::inskeleton;
         vertices[currentNumberVertex].label = GraphLabels::inskeleton;
     }
@@ -142,7 +148,6 @@ std::shared_ptr<std::deque<vertex_t>> SetGraph::LeftTraversal(const int& current
         if (isFinded) {
             auto poped = vertexStack->back();
             if (poped.numberVertex == stopVertexNumber) {
-                std::cout << "STACK:" << std::endl;
                 return vertexStack;
             }
         } else {
@@ -180,6 +185,3 @@ void SetGraph::visitInnerEdges(const int& repeatedVertex, const int& numberEdge)
         }
     }
 }
-
-
-
