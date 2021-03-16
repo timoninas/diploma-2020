@@ -68,19 +68,20 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     auto initialStartVertex = inputVertex;
     auto currentVertex = inputVertex;
     vertices[inputVertex].label = GraphLabels::visited;
-    std::shared_ptr<std::deque<vertex_t>> resultTraversal;
+    std::shared_ptr<std::deque<vertex_t>> initTraversal;
     
+    // НАЧАЛО АЛГОРИТМА
+    // 0. Инициализация
     for (auto iter = inputEdges.cbegin(); iter != inputEdges.cend(); iter++) {
         auto currentEdge = (*iter);
         if (currentEdge.label != GraphLabels::notvisited) continue;
         
-//        resultTraversal->clear();
-        resultTraversal = LeftTraversal(currentVertex, outputVertex);
+        initTraversal = LeftTraversalWithInitialization(currentVertex, outputVertex);
         
-        if (resultTraversal->empty()) {
+        if (initTraversal->empty()) {
             currentVertex = initialStartVertex;
         } else {
-            currentVertex = resultTraversal->back().numberVertex;
+            currentVertex = initTraversal->back().numberVertex;
         }
         
         if (currentVertex == inputVertex) {
@@ -98,18 +99,19 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
         }
     }
     
-    if (resultTraversal->empty()) {
+    if (initTraversal->empty()) {
         std::cout << "NON-CONNECTED GRAPH" << std::endl;
+        assert(1 < 0);
     }
     
     // Отметить все вершине в стеке, как в остове
     std::vector<std::pair<int, int>> pairEdgesInSekelton;
-    for (auto iter = resultTraversal->begin(); iter != resultTraversal->end(); iter++) {
+    for (auto iter = initTraversal->begin(); iter != initTraversal->end(); iter++) {
         auto currentNumberVertex = (*iter).numberVertex;
         (*iter).label = GraphLabels::inskeleton;
         vertices[currentNumberVertex].label = GraphLabels::inskeleton;
         std::cout << (*iter).point.x << " " << (*iter).point.y << " " << (*iter).label << std::endl;
-        if (iter != resultTraversal->begin()) {
+        if (iter != initTraversal->begin()) {
             auto firstNumberVertex = (*iter).numberVertex;
             auto secondNumberVertex = (*(iter - 1)).numberVertex;
             pairEdgesInSekelton.push_back(std::make_pair(firstNumberVertex, secondNumberVertex));
@@ -130,9 +132,44 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
             }
         }
     }
+    
+    // 1. Построение остова
+    std::shared_ptr<std::deque<int>> resultTraversal;
+    auto tmpVer = GetNextEdges(initTraversal->front().numberVertex);
+    while (!initTraversal->empty()) {
+        auto tmpVertex = initTraversal->front();
+        initTraversal->pop_front();
+        if (tmpVertex.numberVertex == outputVertex) {
+            // Дошли до последней вершины
+            // Значит весь граф обошли и все остовы построили
+            std::cout << "OUTPUT VETRTEX -> REACHED" << std::endl;
+            break;
+        }
+        
+        auto nextEdges = GetNextEdges(tmpVertex.numberVertex);
+        for (auto iter = nextEdges.begin(); iter != nextEdges.end(); iter++) {
+            auto edgeNotInSkeleton = (*iter);
+            // Если ребро не посещено
+            if (edgeNotInSkeleton.label != GraphLabels::notvisited) continue;
+            
+            edgeNotInSkeleton.label = GraphLabels::visited;
+            edges[edgeNotInSkeleton.numberEdge].label = GraphLabels::visited;
+            resultTraversal = LeftTraversalBuildingSkeleton(tmpVertex.numberVertex);
+            if (resultTraversal->empty()) {
+                // Вернулся пустой стек
+                // Пропускаем и переходим к след. итерации
+            } else {
+                // Есть содержимое в стеке
+                // Новые вершины остовные
+                // Добавляем в resultTraversal
+                // И дальше while обработает их
+            }
+        }
+        
+    }
 }
 
-std::shared_ptr<std::deque<vertex_t>> SetGraph::LeftTraversal(const int& currentVertexNumber, const int& stopVertexNumber) {
+std::shared_ptr<std::deque<vertex_t>> SetGraph::LeftTraversalWithInitialization(const int& currentVertexNumber, const int& stopVertexNumber) {
     
     std::shared_ptr< std::deque<vertex_t> >vertexStack( new std::deque<vertex_t>() );
     vertexStack->push_back((GetVertex(currentVertexNumber)));
@@ -174,6 +211,29 @@ std::shared_ptr<std::deque<vertex_t>> SetGraph::LeftTraversal(const int& current
         } else {
             vertexStack->pop_back();
         }
+    }
+    
+    return vertexStack;
+}
+
+std::shared_ptr<std::deque<int>> SetGraph::LeftTraversalBuildingSkeleton(const int& currentVertexNumber) {
+    std::shared_ptr< std::deque<int> >vertexStack( new std::deque<int>() );
+    
+    vertexStack->push_back(currentVertexNumber);
+    
+    while (!vertexStack->empty()) {
+        auto poped = vertexStack->back();
+        auto popedVertex = GetVertex(poped);
+        auto nextEdges = GetNextEdges(poped);
+        bool isFinded = false;
+        vertexStack->pop_back();
+        
+        std::cout << popedVertex.label << "] -> " << popedVertex.point.x << " " << popedVertex.point.y << std::endl;
+        
+        for (auto iter = nextEdges.begin(); iter != nextEdges.end(); iter++) {
+            
+        }
+        
     }
     
     return vertexStack;
