@@ -64,13 +64,13 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
 void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     PrintVertices();
     
-    auto edges = GetNextEdges(inputVertex);
+    auto inputEdges = GetNextEdges(inputVertex);
     auto initialStartVertex = inputVertex;
     auto currentVertex = inputVertex;
     vertices[inputVertex].label = GraphLabels::visited;
     std::shared_ptr<std::deque<vertex_t>> resultTraversal;
     
-    for (auto iter = edges.cbegin(); iter != edges.cend(); iter++) {
+    for (auto iter = inputEdges.cbegin(); iter != inputEdges.cend(); iter++) {
         auto currentEdge = (*iter);
         if (currentEdge.label != GraphLabels::notvisited) continue;
         
@@ -103,11 +103,32 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     }
     
     // Отметить все вершине в стеке, как в остове
+    std::vector<std::pair<int, int>> pairEdgesInSekelton;
     for (auto iter = resultTraversal->begin(); iter != resultTraversal->end(); iter++) {
         auto currentNumberVertex = (*iter).numberVertex;
-        std::cout << (*iter).point.x << " " << (*iter).point.y << std::endl;
         (*iter).label = GraphLabels::inskeleton;
         vertices[currentNumberVertex].label = GraphLabels::inskeleton;
+        std::cout << (*iter).point.x << " " << (*iter).point.y << " " << (*iter).label << std::endl;
+        if (iter != resultTraversal->begin()) {
+            auto firstNumberVertex = (*iter).numberVertex;
+            auto secondNumberVertex = (*(iter - 1)).numberVertex;
+            pairEdgesInSekelton.push_back(std::make_pair(firstNumberVertex, secondNumberVertex));
+        }
+    }
+    
+    // Отмечаем ребра, как вошедшие в остов
+    for (auto iterEdge = edges.begin(); iterEdge != edges.end(); iterEdge++) {
+        auto tmpEdge = (*iterEdge);
+        // Сравнение всех пар их стека со всеми парам ребер
+        for (auto iterPair = pairEdgesInSekelton.begin(); iterPair != pairEdgesInSekelton.end(); iterPair++) {
+            auto tmpPair = (*iterPair);
+            if  ((tmpPair.first == tmpEdge.numberVertices.first &&
+                 tmpPair.second == tmpEdge.numberVertices.second) ||
+                (tmpPair.second == tmpEdge.numberVertices.first &&
+                  tmpPair.first == tmpEdge.numberVertices.second)) {
+                edges[tmpEdge.numberEdge].label = GraphLabels::inskeleton;
+            }
+        }
     }
 }
 
@@ -140,7 +161,7 @@ std::shared_ptr<std::deque<vertex_t>> SetGraph::LeftTraversal(const int& current
                     break;
                 } else {
                     // CASE с встречой цикла
-                    visitInnerEdges(tmpVertex.numberVertex, iteratedEdge.numberEdge);
+//                    visitInnerEdges(tmpVertex.numberVertex, iteratedEdge.numberEdge);
                 }
             }
         }
