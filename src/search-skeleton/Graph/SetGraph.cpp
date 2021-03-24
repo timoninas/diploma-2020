@@ -149,12 +149,14 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
         auto nextEdges = GetNextEdges(tmpVertex.numberVertex);
         for (auto iter = nextEdges.begin(); iter != nextEdges.end(); iter++) {
             auto edgeNotInSkeleton = (*iter);
-            // Если ребро не посещено
+            // Если ребро не посещено, пропускаем итерацию
             if (edgeNotInSkeleton.label != GraphLabels::notvisited) continue;
             
+            // Помечаем, как проитерированное
             edgeNotInSkeleton.label = GraphLabels::visited;
             edges[edgeNotInSkeleton.numberEdge].label = GraphLabels::visited;
-            resultTraversal = LeftTraversalBuildingSkeleton(tmpVertex.numberVertex);
+            
+            resultTraversal = LeftTraversalBuildingSkeleton(edgeNotInSkeleton.numberVertices.second);
             if (resultTraversal->empty()) {
                 // Вернулся пустой стек
                 // Пропускаем и переходим к след. итерации
@@ -226,14 +228,42 @@ std::shared_ptr<std::deque<int>> SetGraph::LeftTraversalBuildingSkeleton(const i
         auto popedVertex = GetVertex(poped);
         auto nextEdges = GetNextEdges(poped);
         bool isFinded = false;
-        vertexStack->pop_back();
         
         std::cout << popedVertex.label << "] -> " << popedVertex.point.x << " " << popedVertex.point.y << std::endl;
         
         for (auto iter = nextEdges.begin(); iter != nextEdges.end(); iter++) {
+            auto iteratedEdge = (*iter);
             
+            if (iteratedEdge.isVisited()) {
+                continue;
+            } else if (iteratedEdge.isNotvisited()) {
+                iteratedEdge.label = GraphLabels::visited;
+                edges[iteratedEdge.numberEdge].label = GraphLabels::visited;
+                
+                auto tmpVertex = GetVertex(iteratedEdge.numberVertices.second);
+                
+                if (tmpVertex.isNotvisited()) {
+                    tmpVertex.label = GraphLabels::visited;
+                    vertices[tmpVertex.numberVertex].label = GraphLabels::visited;
+                    
+                    vertexStack->push_back(tmpVertex.numberVertex);
+                    isFinded = true;
+                    break;
+                } else {
+                    // CASE с встречой цикла
+//                    visitInnerEdges(tmpVertex.numberVertex, iteratedEdge.numberEdge);
+                }
+            } else if (iteratedEdge.isInskeleton()) {
+                break;
+            }
         }
         
+        if (isFinded) {
+            std::cout << "Find not visited vertex" << std::endl;
+        } else {
+            std::cout << "Find visited vertex" << std::endl;
+            vertexStack->pop_back();
+        }
     }
     
     return vertexStack;
