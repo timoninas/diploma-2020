@@ -34,11 +34,13 @@ struct IGraph {
     
     virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
     
-    virtual std::shared_ptr<std::deque<vertex_t>> LeftTraversalWithInitialization(const int& currentVertexNumber, const int& stopVertexNumber) = 0;
+    virtual std::shared_ptr<std::deque<int>> LeftTraversalWithInitialization(const int& currentVertexNumber, const int& stopVertexNumber) = 0;
     
     virtual std::shared_ptr<std::deque<int>> LeftTraversalBuildingSkeleton(const int& currentVertexNumber) = 0;
     
     virtual void visitInnerEdges(const int& repeatedVertex, const int& numberEdge) = 0;
+    
+    virtual void MarkSkeletonVerteciesAndEdges(std::shared_ptr<std::deque<int>> needToMarkDeque) = 0;
 };
 
 #endif /* IGraph_hpp */

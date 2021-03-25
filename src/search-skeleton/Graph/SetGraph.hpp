@@ -36,11 +36,13 @@ private:
     
     std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const override;
     
-    std::shared_ptr<std::deque<vertex_t>> LeftTraversalWithInitialization(const int& currentVertexNumber, const int& stopVertexNumber) override;
+    std::shared_ptr<std::deque<int>> LeftTraversalWithInitialization(const int& currentVertexNumber, const int& stopVertexNumber) override;
     
     std::shared_ptr<std::deque<int>> LeftTraversalBuildingSkeleton(const int& currentVertexNumber) override;
     
     void visitInnerEdges(const int& repeatedVertex, const int& numberEdge) override;
+    
+    void MarkSkeletonVerteciesAndEdges(std::shared_ptr<std::deque<int>> needToMarkDeque) override;
 };
 
 #endif /* SetGraph_hpp */

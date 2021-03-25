@@ -165,7 +165,8 @@ void testLogic() {
         
         graph.PrintVertices();
         
-        graph.SearchSkeleton(2, 21);
+        graph.SearchSkeleton(22, 21);
+        return;
     }
     
     // Graph 3
