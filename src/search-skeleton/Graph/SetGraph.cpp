@@ -143,6 +143,14 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
                 resultTraversal->push_front(edgeNotInSkeleton.numberVertices.first);
                 MarkSkeletonVerteciesAndEdges(resultTraversal);
                 std::cout << "First new skeleton" << std::endl;
+                resultTraversal->pop_front();
+                resultTraversal->pop_back();
+                while (!resultTraversal->empty()) {
+                    auto poped = resultTraversal->back();
+                    resultTraversal->pop_back();
+                    initTraversal->push_front(poped);
+                    std::cout << "Push vertices: " << poped << std::endl;
+                }
             }
         }
     }
