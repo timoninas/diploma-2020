@@ -4,7 +4,7 @@ void testLogic() {
 //    // Graph 1
 //    {
 //        SetGraph graph;
-//        
+//
 //        graph.AddVertex(0, 0); // 0
 //        graph.AddVertex(2, -2); // 1
 //        graph.AddVertex(5, -1); // 2
@@ -38,7 +38,7 @@ void testLogic() {
 //        graph.AddVertex(27, 11); // 30
 //        graph.AddVertex(23, 10.5); // 31
 //        graph.AddVertex(21.5, 14); // 32
-//        
+//
 //        graph.AddEdge(0, 1);
 //        graph.AddEdge(1, 2);
 //        graph.AddEdge(2, 3);
@@ -76,14 +76,14 @@ void testLogic() {
 //        graph.AddEdge(30, 32);
 //        graph.AddEdge(26, 31);
 //        graph.AddEdge(26, 32);
-//        
+//
 ////        graph.SearchSkeleton(23, 0);
 //    }
-//    
+//
 //    // Graph 3
 //    {
 //        SetGraph graph;
-//        
+//
 //        graph.AddVertex(4, 21); // 0
 //        graph.AddVertex(15, 21); // 1
 //        graph.AddVertex(24, 20); // 2
@@ -107,7 +107,7 @@ void testLogic() {
 //        graph.AddVertex(12, -3); // 20
 //        graph.AddVertex(4, -5); // 21
 //        graph.AddVertex(32, -2); // 22
-//        
+//
 //        graph.AddEdge(0, 1);
 //        graph.AddEdge(0, 3);
 //        graph.AddEdge(0, 4);
@@ -162,16 +162,16 @@ void testLogic() {
 //        graph.AddEdge(18, 22);
 //        graph.AddEdge(19, 20);
 //        graph.AddEdge(19, 21);
-//        
+//
 ////        graph.PrintVertices();
 ////        graph.SearchSkeleton(22, 21);
 //        return;
 //    }
-//    
+//
 //    // Graph 2
 //    {
 //        SetGraph graph;
-//        
+//
 //        graph.AddVertex(0, 0); // 0
 //        graph.AddVertex(4, 3); // 1
 //        graph.AddVertex(8, 4); // 2
@@ -199,7 +199,7 @@ void testLogic() {
 //        graph.AddVertex(10, 4.5); // 24
 //        graph.AddVertex(-15, -13); // 25
 //        graph.AddVertex(0, 0); // 26
-//        
+//
 //        graph.AddEdge(0, 1);
 //        graph.AddEdge(1, 2);
 //        graph.AddEdge(2, 3);
@@ -229,7 +229,7 @@ void testLogic() {
 //        graph.AddEdge(22, 23);
 //        graph.AddEdge(23, 24);
 //        graph.AddEdge(25, 26);
-//        
+//
 ////        graph.PrintVertices();
 ////        graph.SearchSkeleton(5, 3);
 //    }
@@ -254,7 +254,7 @@ void testLogic() {
         graph.AddVertex(24, -5); // 13
         graph.AddVertex(28, -2); // 14
         graph.AddVertex(33, 1); // 15
-        graph.AddVertex(3, 0); // 16
+        graph.AddVertex(3, 0.5); // 16 (3, 1)
         graph.AddVertex(7, -1); // 17
         graph.AddVertex(11, -2); // 18
         graph.AddVertex(15, -3); // 19
@@ -308,6 +308,14 @@ void testLogic() {
         graph.AddEdge(23, 24);
         graph.AddEdge(24, 25);
         graph.AddEdge(25, 15);
+        graph.AddEdge(16, 26);
+        graph.AddEdge(26, 27);
+        graph.AddEdge(27, 28);
+        graph.AddEdge(28, 29);
+        graph.AddEdge(28, 30);
+        graph.AddEdge(30, 31);
+        graph.AddEdge(31, 32);
+        graph.AddEdge(32, 15);
         graph.AddEdge(3, 33);
         graph.AddEdge(33, 34);
         graph.AddEdge(34, 35);
