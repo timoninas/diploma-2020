@@ -106,6 +106,12 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     
     MarkSkeletonVerteciesAndEdges(initTraversal);
     
+    for (auto iter = edges.begin(); iter != edges.end(); iter++) {
+        auto first = GetVertex((*iter).numberVertices.first);
+        auto second = GetVertex((*iter).numberVertices.second);
+        std::cout << first.numberVertex << "[" << first.label << "] " << second.numberVertex << "[" << second.label << "] " << " -> " << (*iter).label << std::endl;
+    }
+    
     // 1. Построение остова
     std::shared_ptr<std::deque<int>> resultTraversal;
     auto tmpVer = GetNextEdges(initTraversal->front());
@@ -141,8 +147,24 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
                 // И дальше while обработает их
                 std::cout << "Returned new part of skeleton" << std::endl;
                 resultTraversal->push_front(edgeNotInSkeleton.numberVertices.first);
+                
+                // Когда начальная и конечная вершина в деке равны
+                // Переходим к следующей итерации циклаe
+                if (resultTraversal->front() == resultTraversal->back()) {
+                    std::cout << "Come in the same vertex" << std::endl;
+                    continue;
+                }
                 MarkSkeletonVerteciesAndEdges(resultTraversal);
                 std::cout << "First new skeleton" << std::endl;
+                
+                
+                for (auto iter = edges.begin(); iter != edges.end(); iter++) {
+                    auto first = GetVertex((*iter).numberVertices.first);
+                    auto second = GetVertex((*iter).numberVertices.second);
+                    std::cout << first.numberVertex << "[" << first.label << "] " << second.numberVertex << "[" << second.label << "] " << " -> " << (*iter).label << std::endl;
+                }
+                
+                
                 resultTraversal->pop_front();
                 resultTraversal->pop_back();
                 while (!resultTraversal->empty()) {
@@ -170,6 +192,7 @@ std::shared_ptr<std::deque<int>> SetGraph::LeftTraversalWithInitialization(const
         for (auto iter = nextEdges.cbegin(); iter != nextEdges.cend(); iter++) {
             
             auto iteratedEdge = (*iter);
+            
             
             if (iteratedEdge.isNotvisited()) {
                 edges[iteratedEdge.numberEdge].label = GraphLabels::visited;
