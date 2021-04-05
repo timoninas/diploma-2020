@@ -1,8 +1,8 @@
 #ifndef Vertex_hpp
 #define Vertex_hpp
 
-#include "../Point/Point.hpp"
-#include "../GraphLabel/GraphLabel.hpp"
+#include "../../Point/Point V1/Point.hpp"
+#include "../../GraphLabel/GraphLabel.hpp"
 
 #include <stdio.h>
 
@@ -21,7 +21,7 @@ typedef struct vertex {
     }
     
     bool isVisited() {
-        return label == GraphLabels::inskeleton;
+        return label == GraphLabels::visited;
     }
     
     bool isInskeleton() {

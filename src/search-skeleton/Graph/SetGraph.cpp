@@ -61,6 +61,10 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     return result;
 }
 
+void SetGraph::SearchSkeletonV2(int inputVertex, int outputVertex) {
+    std::cout << "KEK KEK KEK KEK KEK KEK KEK KEK KEK KEK " << std::endl;
+}
+
 void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     PrintVertices();
     
