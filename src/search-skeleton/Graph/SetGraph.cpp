@@ -91,7 +91,40 @@ void SetGraph::SearchSkeletonV2(int inputVertex, int outputVertex) {
     // MARK:- Начало алгоритма
     //        0. Инициализация
     // -----------------------------
+    vertices[inputVertex].label = GraphLabels::inskeleton;
+    vertices[outputVertex].label = GraphLabels::inskeleton;
     
+    auto initialVertex = vertices[inputVertex];
+    for (auto iter = initialVertex.numberEdges.begin(); iter != initialVertex.numberEdges.end(); iter++) {
+        
+        // Меняем номера вершин местами, если входящяя вершина не равна ею в ребре
+        auto numberEdge = *iter;
+        if (edges[numberEdge].numberVertices.first != initialVertex.numberVertex) {
+            edges[numberEdge].swipeVertices();
+        }
+        
+        // Проверка на непосещенность ребра
+        auto currentEdge = GetEdge(*iter);
+        if (currentEdge.label != GraphLabels::notvisited) continue;
+        
+        // Помечаем ребро как посещенное
+        currentEdge.label = GraphLabels::visited;
+        edges[currentEdge.numberEdge].label = GraphLabels::visited;
+        
+        // MARK:- Получаем только notvisited ребра
+        //        Запускаем LeftTraversal
+        auto resultTravertsal = LeftTraversalWithInitializationV2(currentEdge.numberVertices.second, inputVertex, outputVertex);
+    }
+}
+
+int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, const int& inputVertex, const int& outputVertex) {
+    
+    auto currentNumberVertex = submittedVertex;
+    while (currentNumberVertex != inputVertex || currentNumberVertex != outputVertex) {
+        
+    }
+    
+    return 0;
 }
 
 

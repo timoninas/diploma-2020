@@ -335,16 +335,6 @@ void testLogic() {
 int main(int argc, const char * argv[]) {
     
     testLogic();
-    edge_t edge1{2, {1, 2}, {3, 4}, 10, 15};
-    edge_v2 edge = edge1.adaptToEdgeV2();
-    
-    vertex_v2_t vertex{1, 2, 10};
-    
-    std::cout << edge.numberVertices.first << " " << edge.numberVertices.second << std::endl;
-
-    edge.swipeVertices();
-
-    std::cout << edge.numberVertices.first << " " << edge.numberVertices.second << std::endl;
     
     return 0;
 }

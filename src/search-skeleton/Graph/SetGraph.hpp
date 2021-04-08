@@ -36,6 +36,8 @@ private:
     
     std::shared_ptr<std::deque<int>> LeftTraversalWithInitialization(const int& currentVertexNumber, const int& stopVertexNumber) override;
     
+    int LeftTraversalWithInitializationV2(const int& submittedVertex, const int& inputVertex, const int& outputVertex) override;
+    
     std::shared_ptr<std::deque<int>> LeftTraversalBuildingSkeleton(const int& currentVertexNumber) override;
     
     void visitInnerEdges(const int& repeatedVertex, const int& numberEdge) override;
