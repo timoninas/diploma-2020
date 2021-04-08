@@ -119,9 +119,46 @@ void SetGraph::SearchSkeletonV2(int inputVertex, int outputVertex) {
 
 int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, const int& inputVertex, const int& outputVertex) {
     
-    auto currentNumberVertex = submittedVertex;
-    while (currentNumberVertex != inputVertex || currentNumberVertex != outputVertex) {
+    auto prevVertexNumber = inputVertex;
+    auto currentVertex = GetVertex(submittedVertex);
+    auto currentVertexNumber = currentVertex.numberVertex;
+    int size = currentVertex.numberEdges.size();
+    
+    while (1) {
+        auto iter = 0;
+        for (; iter < size; iter++) {
+            if (currentVertex.numberEdges[iter] == prevVertexNumber) {
+                std::cout << "iter -> " << currentVertex.numberEdges[iter] << std::endl;
+                iter = (iter + 1) % size;
+                break;
+            } else {
+                std::cout;
+            }
+        }
         
+        while (1) {
+            auto edge = GetEdge(currentVertex.numberEdges[iter]);
+            if (edge.label == GraphLabels::dead) continue;
+            
+            if (edge.numberVertices.first != currentVertexNumber) {
+                edge.swipeVertices();
+                edges[edge.numberEdge].swipeVertices();
+            }
+            
+            if (edge.label == GraphLabels::notvisited) {
+                
+                edge.label = GraphLabels::visited;
+                edges[edge.numberEdge].label = GraphLabels::visited;
+                
+                prevVertexNumber = currentVertexNumber;
+                currentVertexNumber = edge.numberVertices.second;
+                currentVertex = GetVertex(currentVertexNumber);
+                size = currentVertex.numberEdges.size();
+                
+                break;
+            }
+            iter = (iter + 1) % size;
+        }
     }
     
     return 0;
