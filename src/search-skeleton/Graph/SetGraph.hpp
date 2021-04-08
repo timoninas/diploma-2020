@@ -25,10 +25,10 @@ public:
     
 private:
     std::vector< std::unordered_set< int > > graph;
-    std::vector< vertex_t > vertices;
+    std::vector< vertex_v2_t > vertices;
     std::vector< edge_t > edges;
     
-    const vertex_t& GetVertex(int at) override;
+    const vertex_v2_t& GetVertex(int at) override;
     
     const edge_t& GetEdge(int at) override;
     

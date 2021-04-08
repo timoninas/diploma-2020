@@ -43,6 +43,16 @@ typedef struct edge {
         edge_v2_t tmpEdge{numberEdge, numberVertices.first, numberVertices.second};
         return tmpEdge;
     }
+    
+    void swipeVertices() {
+        auto tmp = numberVertices.first;
+        numberVertices.first = numberVertices.second;
+        numberVertices.second = tmp;
+        
+        auto tmpp = points.first;
+        points.first = points.second;
+        points.second = tmpp;
+    }
 } edge_t;
 
 struct cmp {

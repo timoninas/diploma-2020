@@ -24,7 +24,7 @@ struct IGraph {
     
     virtual void AddEdge(int from, int to) = 0;
     
-    virtual const vertex_t& GetVertex(int at) = 0;
+    virtual const vertex_v2_t& GetVertex(int at) = 0;
     
     virtual const edge_t& GetEdge(int at) = 0;
     

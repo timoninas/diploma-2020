@@ -9,7 +9,7 @@ int SetGraph::VerticesCount() const {
 }
 
 void SetGraph::AddVertex(double x, double y) {
-    vertex_t v{x, y, int(vertices.size())};
+    vertex_v2_t v{x, y, int(vertices.size())};
     vertices.push_back(v);
 }
 
@@ -32,7 +32,7 @@ void SetGraph::AddEdge(int from, int to) {
     edges.push_back(e1);
 }
 
-const vertex_t& SetGraph::GetVertex(int at) {
+const vertex_v2_t& SetGraph::GetVertex(int at) {
     assert(at >= 0);
     assert(at < vertices.size());
     return vertices[at];
@@ -62,8 +62,38 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
 }
 
 void SetGraph::SearchSkeletonV2(int inputVertex, int outputVertex) {
-    std::cout << "KEK KEK KEK KEK KEK KEK KEK KEK KEK KEK " << std::endl;
+    // -----------------------------
+    // MARK:- Подготовительная часть
+    // -----------------------------
+    // MARK:- Сформировать массив для каждой вершины с прилежащими ребрами
+    for (auto vIter = vertices.begin(); vIter != vertices.end(); vIter++) {
+        
+        auto currentVertex = vIter;
+        auto currentNumberVertex = currentVertex->numberVertex;
+        
+        std::set<edge_t, cmpAngle> angledEdges = GetNextEdges(currentNumberVertex);
+        
+        for (auto angIter = angledEdges.begin(); angIter != angledEdges.end(); angIter++) {
+            currentVertex->numberEdges.push_back(angIter->numberEdge);
+        }
+        
+        // MARK:- Поставить ребрам пометку dead, со степенью вершины 1
+        if (currentVertex->numberEdges.size() == 1 &&
+            (currentNumberVertex != inputVertex && currentNumberVertex != outputVertex)) {
+            for (auto deadIter = currentVertex->numberEdges.begin(); deadIter != currentVertex->numberEdges.end(); deadIter++) {
+                auto numberEdge = (*deadIter);
+                edges[numberEdge].label = GraphLabels::dead;
+            }
+        }
+    }
+    
+    // -----------------------------
+    // MARK:- Начало алгоритма
+    //        0. Инициализация
+    // -----------------------------
+    
 }
+
 
 void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
     PrintVertices();
