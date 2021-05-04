@@ -21,7 +21,7 @@ public:
     
     void SearchSkeleton(int inputVertex, int outputVertex) override;
     
-    void SearchSkeletonV2(int inputVertex, int outputVertex) override;
+    void SearchSkeletonV2(const int inputVertex, const int outputVertex) override;
     
 private:
     std::vector< std::unordered_set< int > > graph;

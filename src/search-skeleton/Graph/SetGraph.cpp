@@ -61,7 +61,7 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     return result;
 }
 
-void SetGraph::SearchSkeletonV2(int inputVertex, int outputVertex) {
+void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     // -----------------------------
     // MARK:- Подготовительная часть
     // -----------------------------
@@ -103,7 +103,8 @@ void SetGraph::SearchSkeletonV2(int inputVertex, int outputVertex) {
             edges[numberEdge].swipeVertices();
         }
         
-        // Проверка на непосещенность ребра
+        // MARK:- Пропуск всех ребер, кроме посещенного
+        //        Проверка на непосещенность ребра
         auto currentEdge = GetEdge(*iter);
         if (currentEdge.label != GraphLabels::notvisited) continue;
         
@@ -114,6 +115,15 @@ void SetGraph::SearchSkeletonV2(int inputVertex, int outputVertex) {
         // MARK:- Получаем только notvisited ребра
         //        Запускаем LeftTraversal
         auto resultTravertsal = LeftTraversalWithInitializationV2(currentEdge.numberVertices.second, inputVertex, outputVertex);
+        if (resultTravertsal == outputVertex) {
+            std::cout << "Find output vertex" << std::endl;
+            break;
+        } else if (resultTravertsal == inputVertex) {
+            std::cout << "Come back to input vertex" << std::endl;
+        } else {
+            std::cout << "Something else" << std::endl;
+        }
+        std::cout << "resultTravertsal = " << resultTravertsal << std::endl;
     }
 }
 
@@ -126,19 +136,40 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
     
     while (1) {
         auto iter = 0;
-        for (; iter < size; iter++) {
-            if (currentVertex.numberEdges[iter] == prevVertexNumber) {
+        auto limitCrawl = 0;
+        for (; iter < size && limitCrawl <= size ; limitCrawl++) {
+            auto tmpEdge = GetEdge(currentVertex.numberEdges[iter]);
+            if (tmpEdge.numberVertices.first == prevVertexNumber) {
                 std::cout << "iter -> " << currentVertex.numberEdges[iter] << std::endl;
                 iter = (iter + 1) % size;
                 break;
             } else {
                 std::cout;
             }
+            iter = (iter + 1) % size;
         }
         
-        while (1) {
+        if (limitCrawl >= size) {
+            return inputVertex;
+        }
+        
+        limitCrawl = 0;
+        while (limitCrawl <= size) {
+            limitCrawl++;
+            
             auto edge = GetEdge(currentVertex.numberEdges[iter]);
-            if (edge.label == GraphLabels::dead) continue;
+            
+            
+            if (edge.numberVertices.first == outputVertex) {
+                return outputVertex;
+            } else if (edge.numberVertices.first == inputVertex) {
+                return inputVertex;
+            }
+            
+            if (edge.label == GraphLabels::dead) {
+                iter = (iter + 1) % size;
+                continue;
+            }
             
             if (edge.numberVertices.first != currentVertexNumber) {
                 edge.swipeVertices();
@@ -158,6 +189,10 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
                 break;
             }
             iter = (iter + 1) % size;
+        }
+        
+        if (limitCrawl >= size) {
+            return inputVertex;
         }
     }
     

@@ -280,7 +280,7 @@ void testLogic() {
         graph.AddVertex(27, 6); // 39
         graph.AddVertex(30, 5); // 40
         
-        graph.AddEdge(1, 2);
+//        graph.AddEdge(1, 2);
         graph.AddEdge(2, 3);
         graph.AddEdge(3, 4);
         graph.AddEdge(4, 5);
@@ -327,7 +327,6 @@ void testLogic() {
         graph.AddEdge(40, 15);
         
         graph.PrintVertices();
-//        graph.SearchSkeleton(15, 1);
         graph.SearchSkeletonV2(15, 1);
     }
 }

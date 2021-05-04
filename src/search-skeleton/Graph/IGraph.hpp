@@ -34,7 +34,7 @@ struct IGraph {
     
     virtual void SearchSkeleton(int inputVertex, int outputVertex) = 0;
     
-    virtual void SearchSkeletonV2(int inputVertex, int outputVertex) = 0;
+    virtual void SearchSkeletonV2(const int inputVertex, const int outputVertex) = 0;
     
     virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
     
