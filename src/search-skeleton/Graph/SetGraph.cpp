@@ -139,6 +139,7 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     // Заканчиваем алгоритм
     if (!isFindOutputVertex) {
         LOG("Not found vertex / Different graph connectivity");
+        return;
     }
     
     LOG("Continue Algorithm");
@@ -146,6 +147,8 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     //        Идем правым обходом от выхода до входа
     //        Помечаем вершины как ВО и добавляем их
     //        В стек
+    auto vertex = GetVertex(outputVertex);
+    std::cout << vertex.label << std::endl;
 }
 
 int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, const int& inputVertex, const int& outputVertex) {

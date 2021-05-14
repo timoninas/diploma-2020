@@ -279,6 +279,7 @@ void testLogic() {
         graph.AddVertex(23, 7); // 38
         graph.AddVertex(27, 6); // 39
         graph.AddVertex(30, 5); // 40
+//        graph.AddVertex(9, 10); // 41
         
 //        graph.AddEdge(1, 2);
         graph.AddEdge(2, 3);
@@ -325,6 +326,7 @@ void testLogic() {
         graph.AddEdge(38, 39);
         graph.AddEdge(39, 40);
         graph.AddEdge(40, 15);
+//        graph.AddEdge(6, 41);
         
         graph.PrintVertices();
         graph.SearchSkeletonV2(15, 1);
