@@ -13,6 +13,8 @@
 		773FF06625CD7C580085B132 /* Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 773FF06425CD7C580085B132 /* Vector.cpp */; };
 		773FF07225CD7DA80085B132 /* GraphLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 773FF07025CD7DA80085B132 /* GraphLabel.cpp */; };
 		773FF07825CD7E410085B132 /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 773FF07625CD7E410085B132 /* Vertex.cpp */; };
+		77A0B0EE264F0E0E00B21E45 /* Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A0B0EC264F0E0E00B21E45 /* Stream.cpp */; };
+		77A0B0F6264F0E5E00B21E45 /* Libraries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A0B0F4264F0E5E00B21E45 /* Libraries.cpp */; };
 		77CB222D261B158D0027FAF5 /* EdgeV2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77CB222B261B158D0027FAF5 /* EdgeV2.cpp */; };
 		77CB2240261B1BEA0027FAF5 /* VertexV2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77CB223E261B1BEA0027FAF5 /* VertexV2.cpp */; };
 		77D2B2AB25C80654009E9B81 /* SetGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77D2B2A925C80654009E9B81 /* SetGraph.cpp */; };
@@ -44,6 +46,10 @@
 		773FF07125CD7DA80085B132 /* GraphLabel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GraphLabel.hpp; sourceTree = "<group>"; };
 		773FF07625CD7E410085B132 /* Vertex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vertex.cpp; sourceTree = "<group>"; };
 		773FF07725CD7E410085B132 /* Vertex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vertex.hpp; sourceTree = "<group>"; };
+		77A0B0EC264F0E0E00B21E45 /* Stream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stream.cpp; sourceTree = "<group>"; };
+		77A0B0ED264F0E0E00B21E45 /* Stream.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stream.hpp; sourceTree = "<group>"; };
+		77A0B0F4264F0E5E00B21E45 /* Libraries.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Libraries.cpp; sourceTree = "<group>"; };
+		77A0B0F5264F0E5E00B21E45 /* Libraries.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Libraries.hpp; sourceTree = "<group>"; };
 		77CB222B261B158D0027FAF5 /* EdgeV2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeV2.cpp; sourceTree = "<group>"; };
 		77CB222C261B158D0027FAF5 /* EdgeV2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EdgeV2.hpp; sourceTree = "<group>"; };
 		77CB223E261B1BEA0027FAF5 /* VertexV2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexV2.cpp; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 				773FF06E25CD7C890085B132 /* Model */,
 				77D2B2B425C81FAE009E9B81 /* AngleOperations.cpp */,
 				77D2B2B525C81FAE009E9B81 /* AngleOperations.hpp */,
+				77A0B0F0264F0E1800B21E45 /* Helpers */,
 			);
 			path = "search-skeleton";
 			sourceTree = "<group>";
@@ -158,6 +165,33 @@
 				77D2B2AE25C806A2009E9B81 /* IGraph.hpp */,
 			);
 			path = Graph;
+			sourceTree = "<group>";
+		};
+		77A0B0F0264F0E1800B21E45 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				77A0B0F2264F0E2000B21E45 /* Stream */,
+				77A0B0F8264F0E6200B21E45 /* Libraries */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		77A0B0F2264F0E2000B21E45 /* Stream */ = {
+			isa = PBXGroup;
+			children = (
+				77A0B0EC264F0E0E00B21E45 /* Stream.cpp */,
+				77A0B0ED264F0E0E00B21E45 /* Stream.hpp */,
+			);
+			path = Stream;
+			sourceTree = "<group>";
+		};
+		77A0B0F8264F0E6200B21E45 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				77A0B0F4264F0E5E00B21E45 /* Libraries.cpp */,
+				77A0B0F5264F0E5E00B21E45 /* Libraries.hpp */,
+			);
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		77CB222F261B15940027FAF5 /* Edge V2 */ = {
@@ -265,12 +299,14 @@
 				773FF07825CD7E410085B132 /* Vertex.cpp in Sources */,
 				7724114A25B4D7DF00102C08 /* main.cpp in Sources */,
 				77CB222D261B158D0027FAF5 /* EdgeV2.cpp in Sources */,
+				77A0B0EE264F0E0E00B21E45 /* Stream.cpp in Sources */,
 				773FF07225CD7DA80085B132 /* GraphLabel.cpp in Sources */,
 				773FF06625CD7C580085B132 /* Vector.cpp in Sources */,
 				773FF06225CD7C2A0085B132 /* Point.cpp in Sources */,
 				773FF05A25CD7BC60085B132 /* Edge.cpp in Sources */,
 				77D2B2AB25C80654009E9B81 /* SetGraph.cpp in Sources */,
 				77CB2240261B1BEA0027FAF5 /* VertexV2.cpp in Sources */,
+				77A0B0F6264F0E5E00B21E45 /* Libraries.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

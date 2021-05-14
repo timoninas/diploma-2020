@@ -4,6 +4,10 @@ SetGraph::SetGraph(const IGraph& sendedGraph) {
     graph.resize(sendedGraph.VerticesCount());
 }
 
+void LOG(std::string message) {
+    std::cout << "[LOG] " << message << std::endl;
+}
+
 int SetGraph::VerticesCount() const {
     return graph.size();
 }
@@ -93,6 +97,7 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     // -----------------------------
     vertices[inputVertex].label = GraphLabels::inskeleton;
     vertices[outputVertex].label = GraphLabels::inskeleton;
+    bool isFindOutputVertex = false;
     
     auto initialVertex = vertices[inputVertex];
     for (auto iter = initialVertex.numberEdges.begin(); iter != initialVertex.numberEdges.end(); iter++) {
@@ -116,15 +121,31 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
         //        Запускаем LeftTraversal
         auto resultTravertsal = LeftTraversalWithInitializationV2(currentEdge.numberVertices.second, inputVertex, outputVertex);
         if (resultTravertsal == outputVertex) {
-            std::cout << "Find output vertex" << std::endl;
+            LOG("Find output vertex");
             break;
         } else if (resultTravertsal == inputVertex) {
-            std::cout << "Come back to input vertex" << std::endl;
+            LOG("Come back to input vertex");
         } else {
-            std::cout << "Something else" << std::endl;
+            LOG("Something went wrong");
+            assert(0);
         }
-        std::cout << "resultTravertsal = " << resultTravertsal << std::endl;
+        
+        std::stringstream buffer;
+        buffer << "resultTravertsal = " << resultTravertsal;
+        LOG(buffer.str());
     }
+    
+    // Если выходная вершина не была найдена
+    // Заканчиваем алгоритм
+    if (!isFindOutputVertex) {
+        LOG("Not found vertex / Different graph connectivity");
+    }
+    
+    LOG("Continue Algorithm");
+    // MARK:- Правый обход
+    //        Идем правым обходом от выхода до входа
+    //        Помечаем вершины как ВО и добавляем их
+    //        В стек
 }
 
 int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, const int& inputVertex, const int& outputVertex) {
@@ -140,7 +161,9 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
         for (; iter < size && limitCrawl <= size ; limitCrawl++) {
             auto tmpEdge = GetEdge(currentVertex.numberEdges[iter]);
             if (tmpEdge.numberVertices.first == prevVertexNumber) {
-                std::cout << "iter -> " << currentVertex.numberEdges[iter] << std::endl;
+                std::stringstream buffer;
+                buffer << "iter -> " << currentVertex.numberEdges[iter] << std::endl;
+                LOG(buffer.str());
                 iter = (iter + 1) % size;
                 break;
             } else {
@@ -158,7 +181,6 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
             limitCrawl++;
             
             auto edge = GetEdge(currentVertex.numberEdges[iter]);
-            
             
             if (edge.numberVertices.first == outputVertex) {
                 return outputVertex;
@@ -302,7 +324,6 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
                     auto second = GetVertex((*iter).numberVertices.second);
                     std::cout << first.numberVertex << "[" << first.label << "] " << second.numberVertex << "[" << second.label << "] " << " -> " << (*iter).label << std::endl;
                 }
-                
                 
                 resultTraversal->pop_front();
                 resultTraversal->pop_back();

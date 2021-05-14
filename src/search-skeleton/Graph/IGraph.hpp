@@ -1,15 +1,8 @@
 #ifndef IGraph_hpp
 #define IGraph_hpp
 
-#include <stdio.h>
-#include <vector>
-#include <queue>
-#include <deque>
-#include <unordered_set>
-#include <utility>
-#include <set>
-#include <iostream>
-#include <stack>
+#include "../Helpers/Stream/Stream.hpp"
+#include "../Helpers/Libraries/Libraries.hpp"
 
 #include "AngleOperations.hpp"
 #include "../Model/Edge/Edge V1/Edge.hpp"
