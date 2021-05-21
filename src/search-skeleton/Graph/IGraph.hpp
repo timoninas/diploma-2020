@@ -19,6 +19,8 @@ struct IGraph {
     
     virtual const vertex_v2_t& GetVertex(int at) = 0;
     
+    virtual const edge_t& GetEdge(int at, int fromVertexNumber) = 0;
+    
     virtual const edge_t& GetEdge(int at) = 0;
     
     virtual int VerticesCount() const = 0;

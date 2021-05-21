@@ -360,6 +360,7 @@ void testLogic() {
         graph.AddEdge(1, 2);
         graph.AddEdge(2, 3);
         graph.AddEdge(3, 4);
+        graph.AddEdge(4, 5);
         graph.AddEdge(5, 6);
         graph.AddEdge(2, 7);
         graph.AddEdge(7, 8);

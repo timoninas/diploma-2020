@@ -30,6 +30,8 @@ private:
     
     const vertex_v2_t& GetVertex(int at) override;
     
+    const edge_t& GetEdge(int at, int fromVertexNumber) override;
+    
     const edge_t& GetEdge(int at) override;
     
     std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const override;

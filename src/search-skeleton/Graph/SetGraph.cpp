@@ -42,6 +42,17 @@ const vertex_v2_t& SetGraph::GetVertex(int at) {
     return vertices[at];
 }
 
+const edge_t& SetGraph::GetEdge(int at, int fromVertexNumber) {
+    assert(at >= 0);
+    assert(at < edges.size());
+    
+    if (edges[at].numberVertices.first != fromVertexNumber) {
+        edges[at].swipeVertices();
+    }
+    
+    return edges[at];
+}
+
 const edge_t& SetGraph::GetEdge(int at) {
     assert(at >= 0);
     assert(at < edges.size());
@@ -156,7 +167,6 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
     
     auto prevVertexNumber = inputVertex;
     auto currentVertex = GetVertex(submittedVertex);
-    auto currentVertexNumber = currentVertex.numberVertex;
     int size = currentVertex.numberEdges.size();
     
     while (1) {
@@ -166,8 +176,9 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
         // MARK:- Доходим по массиву ребер у вершины до того ребра
         //        От которого пришли, чтобы со следующего начать левый обход
         for (; iter < size && limitCrawl <= size ; limitCrawl++) {
-            auto tmpEdge = GetEdge(currentVertex.numberEdges[iter]);
-            if (tmpEdge.numberVertices.first == prevVertexNumber) {
+            auto tmpEdge = GetEdge(currentVertex.numberEdges[iter], currentVertex.numberVertex);
+            
+            if (tmpEdge.numberVertices.second == prevVertexNumber) {
                 std::stringstream buffer;
                 buffer << "iter -> " << currentVertex.numberEdges[iter] << std::endl;
                 LOG(buffer.str());
@@ -191,7 +202,7 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
             limitCrawl++;
             
             // Берем текующее ребро для последующей экспертизы
-            auto edge = GetEdge(currentVertex.numberEdges[iter]);
+            auto edge = GetEdge(currentVertex.numberEdges[iter], currentVertex.numberVertex);
             
             // Смотрим если мы дошли до желаемого ребра
             // Или дошли до начального ребра, тогда заканчиваем
@@ -203,7 +214,7 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
             }
             
             // Доп обмен вершинами. Тк нам начальная нужна на первой позиции
-            if (edge.numberVertices.first != currentVertexNumber) {
+            if (edge.numberVertices.first != currentVertex.numberVertex) {
                 edge.swipeVertices();
                 edges[edge.numberEdge].swipeVertices();
             }
@@ -215,20 +226,21 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
                 edge.label = GraphLabels::visited;
                 edges[edge.numberEdge].label = GraphLabels::visited;
                 
-                prevVertexNumber = currentVertexNumber;
-                currentVertexNumber = edge.numberVertices.second;
-                currentVertex = GetVertex(currentVertexNumber);
+                prevVertexNumber = currentVertex.numberVertex;
+                currentVertex = GetVertex(edge.numberVertices.second);
                 size = currentVertex.numberEdges.size();
                 
                 break;
-                
                 
             // MARK:- Случай, когда мы зашли в тупик и нам нужно выбраться
             //        Поэтому следуем по посещнным ребрам, левым обходом
             // VVV
             } else if (edge.label == GraphLabels::visited) {
-                std::cout << "Пошли по новой" << std::endl;
+                prevVertexNumber = currentVertex.numberVertex;
+                currentVertex = GetVertex(edge.numberVertices.second);
+                size = currentVertex.numberEdges.size();
                 
+                break;
                 
             // MARK:- Случай, когда дошли до мертвого ребра, который
             //        Всегда ведет в тупик
@@ -250,6 +262,7 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
             iter = (iter + 1) % size;
         }
         
+        // Если
         if (limitCrawl > size) {
             return inputVertex;
         }
