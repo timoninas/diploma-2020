@@ -162,6 +162,9 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
     while (1) {
         auto iter = 0;
         auto limitCrawl = 0;
+        
+        // MARK:- Доходим по массиву ребер у вершины до того ребра
+        //        От которого пришли, чтобы со следующего начать левый обход
         for (; iter < size && limitCrawl <= size ; limitCrawl++) {
             auto tmpEdge = GetEdge(currentVertex.numberEdges[iter]);
             if (tmpEdge.numberVertices.first == prevVertexNumber) {
@@ -170,28 +173,36 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
                 LOG(buffer.str());
                 iter = (iter + 1) % size;
                 break;
-            } else {
-                std::cout;
             }
             iter = (iter + 1) % size;
         }
         
+        // MARK:- Просмотр ситуации когда мы больше
+        //        Чем по одному кругу прошли по ребрам вершины
         if (limitCrawl >= size) {
             return inputVertex;
         }
         
         limitCrawl = 0;
+        // MARK:- Цикл по ребрам графа левым обходом
+        //        Идем начиная со следующего ребра, от которого пришли
+        //        В текущую вершину :)
         while (limitCrawl <= size) {
             limitCrawl++;
             
+            // Берем текующее ребро для последующей экспертизы
             auto edge = GetEdge(currentVertex.numberEdges[iter]);
             
+            // Смотрим если мы дошли до желаемого ребра
+            // Или дошли до начального ребра, тогда заканчиваем
+            // Левый обход
             if (edge.numberVertices.first == outputVertex) {
                 return outputVertex;
             } else if (edge.numberVertices.first == inputVertex) {
                 return inputVertex;
             }
             
+            // Доп обмен вершинами. Тк нам начальная нужна на первой позиции
             if (edge.numberVertices.first != currentVertexNumber) {
                 edge.swipeVertices();
                 edges[edge.numberEdge].swipeVertices();
