@@ -120,6 +120,7 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
         // MARK:- Получаем только notvisited ребра
         //        Запускаем LeftTraversal
         auto resultTravertsal = LeftTraversalWithInitializationV2(currentEdge.numberVertices.second, inputVertex, outputVertex);
+        std::cout << "resultTravertsal = " << resultTravertsal << std::endl;
         if (resultTravertsal == outputVertex) {
             LOG("Find output vertex");
             break;
@@ -191,18 +192,15 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
                 return inputVertex;
             }
             
-            if (edge.label == GraphLabels::dead) {
-                iter = (iter + 1) % size;
-                continue;
-            }
-            
             if (edge.numberVertices.first != currentVertexNumber) {
                 edge.swipeVertices();
                 edges[edge.numberEdge].swipeVertices();
             }
             
+            // MARK:- Нормальный случай, когда идем левым обходом
+            //        По непосещенным ребрам
+            // VVV
             if (edge.label == GraphLabels::notvisited) {
-                
                 edge.label = GraphLabels::visited;
                 edges[edge.numberEdge].label = GraphLabels::visited;
                 
@@ -212,11 +210,36 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
                 size = currentVertex.numberEdges.size();
                 
                 break;
+                
+                
+            // MARK:- Случай, когда мы зашли в тупик и нам нужно выбраться
+            //        Поэтому следуем по посещнным ребрам, левым обходом
+            // VVV
+            } else if (edge.label == GraphLabels::visited) {
+                std::cout << "Пошли по новой" << std::endl;
+                
+                
+            // MARK:- Случай, когда дошли до мертвого ребра, который
+            //        Всегда ведет в тупик
+            // VVV
+            } else if (edge.label == GraphLabels::dead) {
+                iter = (iter + 1) % size;
+                continue;
+                
+            // MARK:- Случай. Нереальный
+            // VVV
+            } else if (edge.label == GraphLabels::inskeleton) {
+                assert(0);
+                
+            // MARK:- Случай. Нереальный
+            // VVV
+            } else {
+                assert(0);
             }
             iter = (iter + 1) % size;
         }
         
-        if (limitCrawl >= size) {
+        if (limitCrawl > size) {
             return inputVertex;
         }
     }
@@ -259,13 +282,13 @@ void SetGraph::SearchSkeleton(int inputVertex, int outputVertex) {
             break;
         } else {
             // Сюда не должны зайти
-            assert(1 < 0);
+            assert(0);
         }
     }
     
     if (initTraversal->empty()) {
         std::cout << "NON-CONNECTED GRAPH" << std::endl;
-        assert(1 < 0);
+        assert(0);
     }
     
     MarkSkeletonVerteciesAndEdges(initTraversal);

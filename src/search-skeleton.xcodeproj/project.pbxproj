@@ -427,6 +427,7 @@
 		7724114E25B4D7DF00102C08 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X92LK22555;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -437,6 +438,7 @@
 		7724114F25B4D7DF00102C08 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X92LK22555;
 				ENABLE_HARDENED_RUNTIME = YES;
