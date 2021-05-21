@@ -133,6 +133,7 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
         auto resultTravertsal = LeftTraversalWithInitializationV2(currentEdge.numberVertices.second, inputVertex, outputVertex);
         std::cout << "resultTravertsal = " << resultTravertsal << std::endl;
         if (resultTravertsal == outputVertex) {
+            isFindOutputVertex = true;
             LOG("Find output vertex");
             break;
         } else if (resultTravertsal == inputVertex) {
@@ -160,7 +161,42 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     //        Помечаем вершины как ВО и добавляем их
     //        В стек
     auto vertex = GetVertex(outputVertex);
-    std::cout << vertex.label << std::endl;
+    std::cout << "LOG " << vertex.label << std::endl;
+    
+//    auto inSkeletonStack = RightTraversal(vertex.numberVertex);
+//    for (auto iter = inSkeletonStack->begin(); iter != inSkeletonStack->end(); iter++) {
+//        auto vertex = GetVertex(*iter);
+//        std::cout << "Number: " << vertex.numberVertex << std::endl;
+//    }
+//    std::cout;
+}
+
+std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVertex) {
+    
+    std::shared_ptr< std::deque<int> > traversalStack( new std::deque<int>() );;
+    
+    auto currentVertex = GetVertex(submittedVertex);
+    int size = currentVertex.numberEdges.size();
+    
+    traversalStack->push_back(submittedVertex);
+    
+    while(1) {
+        auto popedVertex = GetVertex(traversalStack->back());
+        
+        for (auto iter = popedVertex.numberEdges.begin();
+             iter != popedVertex.numberEdges.end();
+             iter++) {
+            auto edge = GetEdge(*iter, popedVertex.numberVertex);
+            
+            if (edge.label == GraphLabels::visited) {
+                edges[edge.numberEdge].label = GraphLabels::inskeleton;
+                traversalStack->push_back(edge.numberVertices.second);
+                break;
+            }
+        }
+    }
+    
+    return traversalStack;
 }
 
 int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, const int& inputVertex, const int& outputVertex) {
@@ -262,7 +298,7 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
             iter = (iter + 1) % size;
         }
         
-        // Если
+        // Если прошли по кругу и нет никакого результата
         if (limitCrawl > size) {
             return inputVertex;
         }

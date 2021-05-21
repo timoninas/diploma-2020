@@ -14,8 +14,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "SetGraph::LeftTraversalWithInitialization(currentVertexNumber, stopVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "SetGraph::SearchSkeleton(inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
+            startingLineNumber = "441"
+            endingLineNumber = "441"
             landmarkName = "SetGraph::LeftTraversalWithInitialization(currentVertexNumber, stopVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "SetGraph::SearchSkeleton(inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "490"
-            endingLineNumber = "490"
+            startingLineNumber = "526"
+            endingLineNumber = "526"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "496"
-            endingLineNumber = "496"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "495"
-            endingLineNumber = "495"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "498"
-            endingLineNumber = "498"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -190,8 +190,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
             landmarkName = "SetGraph::visitInnerEdges(repeatedVertex, numberEdge)"
             landmarkType = "7">
             <Locations>
@@ -238,8 +238,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
+            startingLineNumber = "515"
+            endingLineNumber = "515"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,8 +254,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
             landmarkName = "SetGraph::LeftTraversalWithInitialization(currentVertexNumber, stopVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +270,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "473"
-            endingLineNumber = "473"
+            startingLineNumber = "509"
+            endingLineNumber = "509"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,8 +286,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
             landmarkName = "SetGraph::SearchSkeleton(inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -302,8 +302,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
             landmarkName = "SetGraph::SearchSkeleton(inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -318,8 +318,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -334,8 +334,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "466"
-            endingLineNumber = "466"
+            startingLineNumber = "502"
+            endingLineNumber = "502"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -350,8 +350,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
             landmarkName = "SetGraph::LeftTraversalWithInitialization(currentVertexNumber, stopVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -366,8 +366,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "SetGraph::LeftTraversalWithInitialization(currentVertexNumber, stopVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -382,8 +382,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -398,8 +398,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -414,8 +414,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
             landmarkName = "SetGraph::LeftTraversalWithInitialization(currentVertexNumber, stopVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -430,8 +430,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -446,8 +446,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -462,8 +462,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
             landmarkName = "SetGraph::LeftTraversalBuildingSkeleton(currentVertexNumber)"
             landmarkType = "7">
          </BreakpointContent>
@@ -478,8 +478,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "366"
+            endingLineNumber = "366"
             landmarkName = "SetGraph::SearchSkeleton(inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -488,14 +488,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "A54503FD-331E-4180-B1E7-665D6E1B6E5B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "SetGraph::SearchSkeleton(inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -510,8 +510,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "SetGraph::SearchSkeleton(inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,8 +526,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "SetGraph::SearchSkeleton(inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -542,8 +542,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
             landmarkName = "SetGraph::SearchSkeleton(inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -552,14 +552,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "66D6F0DC-4439-4213-B2A4-E3F1126650D4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
             landmarkName = "SetGraph::SearchSkeleton(inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -574,8 +574,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -590,8 +590,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -606,8 +606,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -622,8 +622,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -638,8 +638,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
             <Locations>
@@ -702,8 +702,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -712,150 +712,6 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "E5A2ABDC-1B3D-46BA-A2DC-037014D3C9DC"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "search-skeleton/Graph/SetGraph.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "22007BAA-B36C-49A3-B2FE-DE4630ED29B5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "search-skeleton/Graph/SetGraph.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D462C9F8-2C63-4C98-9B30-87365F5B4A93"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "search-skeleton/Graph/SetGraph.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "01624E1F-A48E-4C2F-850A-5EACF57D4C1B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "search-skeleton/Graph/SetGraph.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9F9DF727-CB99-4AAC-835E-61C91F963BEC"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "search-skeleton/Graph/SetGraph.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2BCFFC44-3341-4216-8EC5-C34DC2CB2B05"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "search-skeleton/Graph/SetGraph.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "31A7C647-3C2F-415A-957F-BF44B378F928"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "search-skeleton/Graph/SetGraph.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "SetGraph::SearchSkeletonV2(inputVertex, outputVertex)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "509D0CC6-235F-43DE-99E4-07684CAAB760"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "search-skeleton/Graph/SetGraph.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E5E48773-ACD7-4DB4-A6DD-BFE1546ED5BD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "search-skeleton/Graph/SetGraph.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
-            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "04E185DA-700F-4192-84D4-146F3DDBE483"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -871,15 +727,159 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "99470220-184B-4DF3-8FA8-C65158F299A1"
-            shouldBeEnabled = "Yes"
+            uuid = "22007BAA-B36C-49A3-B2FE-DE4630ED29B5"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D462C9F8-2C63-4C98-9B30-87365F5B4A93"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "01624E1F-A48E-4C2F-850A-5EACF57D4C1B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F9DF727-CB99-4AAC-835E-61C91F963BEC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2BCFFC44-3341-4216-8EC5-C34DC2CB2B05"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "31A7C647-3C2F-415A-957F-BF44B378F928"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "SetGraph::SearchSkeletonV2(inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "509D0CC6-235F-43DE-99E4-07684CAAB760"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5E48773-ACD7-4DB4-A6DD-BFE1546ED5BD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "04E185DA-700F-4192-84D4-146F3DDBE483"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
+            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "99470220-184B-4DF3-8FA8-C65158F299A1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -894,8 +894,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -910,8 +910,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -926,8 +926,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -942,8 +942,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -952,14 +952,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AFA8B5F7-3120-445F-8834-EFB7B021C86D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -974,8 +974,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -990,8 +990,8 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1006,9 +1006,309 @@
             filePath = "search-skeleton/Graph/SetGraph.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "73D265A1-69A2-47FE-BF74-1BE62AD5CBCB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "SetGraph::SearchSkeletonV2(inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FBE0D7B0-E4CC-473C-AE06-7EE44459E744"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "SetGraph::SearchSkeletonV2(inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E0EA0648-3F78-4893-9657-00C27079CDD7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "SetGraph::SearchSkeletonV2(inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A3BAC958-8919-4BE3-B9C5-EAB551E3C298"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "SetGraph::SearchSkeletonV2(inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "549EBBD9-82BC-4F91-B57C-A2C7A6D07F1C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
+            landmarkName = "SetGraph::LeftTraversalWithInitializationV2(submittedVertex, inputVertex, outputVertex)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "549EBBD9-82BC-4F91-B57C-A2C7A6D07F1C - f1d5e227e6abe2e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SetGraph::LeftTraversalWithInitializationV2(int const&amp;, int const&amp;, int const&amp;)"
+                  moduleName = "search-skeleton"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antontimonin/Desktop/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0/diploma-2020/src/search-skeleton/Graph/SetGraph.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "283"
+                  endingLineNumber = "283"
+                  offsetFromSymbolStart = "465">
+               </Location>
+               <Location
+                  uuid = "549EBBD9-82BC-4F91-B57C-A2C7A6D07F1C - f1d5e227e6abe2e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SetGraph::LeftTraversalWithInitializationV2(int const&amp;, int const&amp;, int const&amp;)"
+                  moduleName = "search-skeleton"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antontimonin/Desktop/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0/diploma-2020/src/search-skeleton/Graph/SetGraph.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "283"
+                  endingLineNumber = "283"
+                  offsetFromSymbolStart = "483">
+               </Location>
+               <Location
+                  uuid = "549EBBD9-82BC-4F91-B57C-A2C7A6D07F1C - f1d5e227e6abe2e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SetGraph::LeftTraversalWithInitializationV2(int const&amp;, int const&amp;, int const&amp;)"
+                  moduleName = "search-skeleton"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antontimonin/Desktop/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0/diploma-2020/src/search-skeleton/Graph/SetGraph.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "283"
+                  endingLineNumber = "283"
+                  offsetFromSymbolStart = "1289">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1ECBF2EA-F3C6-4226-9AC0-E1C9397193D1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "SetGraph::SearchSkeletonV2(inputVertex, outputVertex)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1ECBF2EA-F3C6-4226-9AC0-E1C9397193D1 - aaf5a5e6e02cee46"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SetGraph::SearchSkeletonV2(int, int)"
+                  moduleName = "search-skeleton"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antontimonin/Desktop/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0/diploma-2020/src/search-skeleton/Graph/SetGraph.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "343">
+               </Location>
+               <Location
+                  uuid = "1ECBF2EA-F3C6-4226-9AC0-E1C9397193D1 - aaf5a5e6e02cee46"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SetGraph::SearchSkeletonV2(int, int)"
+                  moduleName = "search-skeleton"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antontimonin/Desktop/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0/diploma-2020/src/search-skeleton/Graph/SetGraph.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "919">
+               </Location>
+               <Location
+                  uuid = "1ECBF2EA-F3C6-4226-9AC0-E1C9397193D1 - aaf5a5e6e02cee46"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SetGraph::SearchSkeletonV2(int, int)"
+                  moduleName = "search-skeleton"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antontimonin/Desktop/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0/diploma-2020/src/search-skeleton/Graph/SetGraph.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "1858">
+               </Location>
+               <Location
+                  uuid = "1ECBF2EA-F3C6-4226-9AC0-E1C9397193D1 - aaf5a5e6e02cee46"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SetGraph::SearchSkeletonV2(int, int)"
+                  moduleName = "search-skeleton"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antontimonin/Desktop/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0/diploma-2020/src/search-skeleton/Graph/SetGraph.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "2520">
+               </Location>
+               <Location
+                  uuid = "1ECBF2EA-F3C6-4226-9AC0-E1C9397193D1 - aaf5a5e6e02cee46"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SetGraph::SearchSkeletonV2(int, int)"
+                  moduleName = "search-skeleton"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/antontimonin/Desktop/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0/diploma-2020/src/search-skeleton/Graph/SetGraph.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "2532">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A93A9A55-9ADA-4DE7-AB3B-10522B52CE73"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "SetGraph::SearchSkeletonV2(inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2CB9BA9-7133-43F5-8156-9B91EDC1688A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "SetGraph::SearchSkeletonV2(inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65766954-8364-4FAA-B1B8-8FBE2DD7163E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "SetGraph::SearchSkeletonV2(inputVertex, outputVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4BFD5FBE-5A2B-4027-AC84-92B7534DDB1F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "SetGraph::RightTraversal(submittedVertex)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BEE48B2B-FEC0-45E4-A563-678A6141F440"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "search-skeleton/Graph/SetGraph.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "SetGraph::RightTraversal(submittedVertex)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

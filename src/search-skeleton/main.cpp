@@ -279,9 +279,9 @@ void testLogic() {
         graph.AddVertex(23, 7); // 38
         graph.AddVertex(27, 6); // 39
         graph.AddVertex(30, 5); // 40
-//        graph.AddVertex(9, 10); // 41
+        graph.AddVertex(9, 10); // 41
         
-//        graph.AddEdge(1, 2);
+        graph.AddEdge(1, 2);
         graph.AddEdge(2, 3);
         graph.AddEdge(3, 4);
         graph.AddEdge(4, 5);
@@ -326,7 +326,7 @@ void testLogic() {
         graph.AddEdge(38, 39);
         graph.AddEdge(39, 40);
         graph.AddEdge(40, 15);
-//        graph.AddEdge(6, 41);
+        graph.AddEdge(6, 41);
         
 //        graph.PrintVertices();
 //        graph.SearchSkeletonV2(15, 1);
@@ -355,6 +355,7 @@ void testLogic() {
         graph.AddVertex(19, -6); // 17
         graph.AddVertex(19, -9); // 18
         graph.AddVertex(23, -6); // 19
+        graph.AddVertex(100, 100); // 20
         
         graph.AddEdge(0, 1);
         graph.AddEdge(1, 2);

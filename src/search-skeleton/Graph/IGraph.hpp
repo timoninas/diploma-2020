@@ -33,6 +33,8 @@ struct IGraph {
     
     virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
     
+    virtual std::shared_ptr<std::deque<int>> RightTraversal(const int& submittedVertex) = 0;
+    
     virtual std::shared_ptr<std::deque<int>> LeftTraversalWithInitialization(const int& currentVertexNumber, const int& stopVertexNumber) = 0;
     
     virtual int LeftTraversalWithInitializationV2(const int& submittedVertex, const int& inputVertex, const int& outputVertex) = 0;
