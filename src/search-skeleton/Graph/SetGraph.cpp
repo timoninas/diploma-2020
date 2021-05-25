@@ -163,12 +163,12 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     auto vertex = GetVertex(outputVertex);
     std::cout << "LOG " << vertex.label << std::endl;
     
-//    auto inSkeletonStack = RightTraversal(vertex.numberVertex);
-//    for (auto iter = inSkeletonStack->begin(); iter != inSkeletonStack->end(); iter++) {
-//        auto vertex = GetVertex(*iter);
-//        std::cout << "Number: " << vertex.numberVertex << std::endl;
-//    }
-//    std::cout;
+    auto inSkeletonStack = RightTraversal(vertex.numberVertex);
+    for (auto iter = inSkeletonStack->begin(); iter != inSkeletonStack->end(); iter++) {
+        auto vertex = GetVertex(*iter);
+        std::cout << "Number: " << vertex.numberVertex << std::endl;
+    }
+    std::cout;
 }
 
 std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVertex) {
@@ -184,8 +184,8 @@ std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVe
         auto popedVertex = GetVertex(traversalStack->back());
         
         for (auto iter = popedVertex.numberEdges.begin();
-             iter != popedVertex.numberEdges.end();
-             iter++) {
+                iter != popedVertex.numberEdges.end();
+                iter++) {
             auto edge = GetEdge(*iter, popedVertex.numberVertex);
             
             if (edge.label == GraphLabels::visited) {
@@ -205,6 +205,8 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
     auto currentVertex = GetVertex(submittedVertex);
     int size = currentVertex.numberEdges.size();
     
+    std::cout << std::endl << std::endl << "PATH:" << std::endl;
+    
     while (1) {
         auto iter = 0;
         auto limitCrawl = 0;
@@ -215,9 +217,6 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
             auto tmpEdge = GetEdge(currentVertex.numberEdges[iter], currentVertex.numberVertex);
             
             if (tmpEdge.numberVertices.second == prevVertexNumber) {
-                std::stringstream buffer;
-                buffer << "iter -> " << currentVertex.numberEdges[iter] << std::endl;
-                LOG(buffer.str());
                 iter = (iter + 1) % size;
                 break;
             }
@@ -266,6 +265,8 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
                 currentVertex = GetVertex(edge.numberVertices.second);
                 size = currentVertex.numberEdges.size();
                 
+                std::cout << prevVertexNumber << " ";
+                
                 break;
                 
             // MARK:- Случай, когда мы зашли в тупик и нам нужно выбраться
@@ -276,6 +277,8 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
                 currentVertex = GetVertex(edge.numberVertices.second);
                 size = currentVertex.numberEdges.size();
                 
+                std::cout << prevVertexNumber << " ";
+                
                 break;
                 
             // MARK:- Случай, когда дошли до мертвого ребра, который
@@ -283,6 +286,9 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
             // VVV
             } else if (edge.label == GraphLabels::dead) {
                 iter = (iter + 1) % size;
+                
+                std::cout << "d(" <<  edge.numberVertices.second << ") ";
+                
                 continue;
                 
             // MARK:- Случай. Нереальный
@@ -299,9 +305,9 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
         }
         
         // Если прошли по кругу и нет никакого результата
-        if (limitCrawl > size) {
-            return inputVertex;
-        }
+//        if (limitCrawl > size) {
+//            return inputVertex;
+//        }
     }
     
     return 0;
