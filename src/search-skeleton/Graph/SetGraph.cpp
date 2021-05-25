@@ -163,7 +163,7 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     auto vertex = GetVertex(outputVertex);
     std::cout << "LOG " << vertex.label << std::endl;
     
-    auto inSkeletonStack = RightTraversal(vertex.numberVertex);
+    auto inSkeletonStack = RightTraversal(vertex.numberVertex, inputVertex);
     for (auto iter = inSkeletonStack->begin(); iter != inSkeletonStack->end(); iter++) {
         auto vertex = GetVertex(*iter);
         std::cout << "Number: " << vertex.numberVertex << std::endl;
@@ -171,12 +171,19 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     std::cout;
 }
 
-std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVertex) {
+std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVertexNumber, const int& outversalVertexNumber) {
     
-    std::shared_ptr< std::deque<int> > traversalStack( new std::deque<int>() );;
+    std::shared_ptr< std::deque<int> > traversalStack( new std::deque<int>() );
+    traversalStack->push_back(submittedVertexNumber);
     
-    auto currentVertex = GetVertex(submittedVertex);
+    auto currentVertex = GetVertex(submittedVertexNumber);
     auto prevVertexNumber = -1;
+    auto totalLimit = 0;
+    
+    // MARK:- Первоначальное добавление вершины
+    //        Так как нет информация от какого ребра пришли к нему
+    //        По всем остальным ребрам идем, зная от какого ребра
+    //        Пришли в данную вершину
     for (auto iter = currentVertex.numberEdges.begin(); iter != currentVertex.numberEdges.end(); iter++) {
  
         auto edge = GetEdge(*iter, currentVertex.numberVertex);
@@ -184,16 +191,22 @@ std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVe
         if (edge.label == GraphLabels::visited) {
             traversalStack->push_back(edge.numberVertices.second);
             prevVertexNumber = edge.numberVertices.first;
-            
-            std::cout << "Start vertex: " << edge.numberVertices.second << std::endl;
+            edges[edge.numberEdge].label = GraphLabels::inskeleton;
             
             break;
         }
     }
     
-    while(1) {
+    while(totalLimit < vertices.size()) {
         auto popedVertex = GetVertex(traversalStack->back());
         int size = popedVertex.numberEdges.size();
+        totalLimit++;
+        
+        // MARK:- Если новая попнутая вершина является конечной (входной)
+        //        Тогда выходим из правого обхода
+        if (popedVertex.numberVertex == outversalVertexNumber) {
+            return traversalStack;
+        }
         
         int limitCrawl = 0;
         int iter = 0;
@@ -205,6 +218,8 @@ std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVe
             auto edge = GetEdge(popedVertex.numberEdges[iter], popedVertex.numberVertex);
             
             if (edge.numberVertices.second == prevVertexNumber) {
+                iter = (iter + 1) % size;
+                prevVertexNumber = edge.numberVertices.first;
                 break;
             }
             iter = (iter + 1) % size;
@@ -219,15 +234,16 @@ std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVe
         for (; iter < size && limitCrawl <= size; limitCrawl++) {
             auto edge = GetEdge(popedVertex.numberEdges[iter], popedVertex.numberVertex);
             
-            if (edge.numberVertices.second == prevVertexNumber) {
+            if (edge.label == GraphLabels::visited) {
+                traversalStack->push_back(edge.numberVertices.second);
+                edges[edge.numberEdge].label = GraphLabels::inskeleton;
                 break;
             }
             iter = (iter + 1) % size;
         }
-        
-        std::cout << "tochno kek" << std::endl;
     }
     
+    traversalStack->clear();
     return traversalStack;
 }
 
