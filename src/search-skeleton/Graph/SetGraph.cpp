@@ -80,6 +80,12 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     // -----------------------------
     // MARK:- Подготовительная часть
     // -----------------------------
+    // MARK:- Проверяем нужно ли вообще обходить граф
+    if (inputVertex == outputVertex) {
+        LOG("Input and Output vertices match");
+        return;
+    }
+    
     // MARK:- Сформировать массив для каждой вершины с прилежащими ребрами
     for (auto vIter = vertices.begin(); vIter != vertices.end(); vIter++) {
         
@@ -164,11 +170,22 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     std::cout << "LOG " << vertex.label << std::endl;
     
     auto inSkeletonStack = RightTraversal(vertex.numberVertex, inputVertex);
+    std::cout << std::endl << std::endl << "IN SKELETON PATH: " << std::endl;
     for (auto iter = inSkeletonStack->begin(); iter != inSkeletonStack->end(); iter++) {
         auto vertex = GetVertex(*iter);
-        std::cout << "Number: " << vertex.numberVertex << std::endl;
+        vertices[vertex.numberVertex].label = GraphLabels::inskeleton;
+        std::cout << vertex.numberVertex << " ";
     }
-    std::cout;
+    std::cout << std::endl;
+    
+    
+    // MARK:- Стек пока вершина не равна выходу - outputVertex
+    //        Если дошли до этой вершины, то из нее нет смысла искать
+    //        Входящие в нее же ребра
+    std::cout << "Start traversal" << std::endl;
+    while(1) {
+        break;
+    }
 }
 
 std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVertexNumber, const int& outversalVertexNumber) {
@@ -253,7 +270,8 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
     auto currentVertex = GetVertex(submittedVertex);
     int size = currentVertex.numberEdges.size();
     
-    std::cout << std::endl << std::endl << "PATH:" << std::endl;
+    std::cout << std::endl << std::endl << "INIT PATH:" << std::endl;
+    std::cout << inputVertex << " ";
     
     while (1) {
         auto iter = 0;
@@ -291,6 +309,7 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
             // Или дошли до начального ребра, тогда заканчиваем
             // Левый обход
             if (edge.numberVertices.first == outputVertex) {
+                std::cout << outputVertex << " ";
                 return outputVertex;
             } else if (edge.numberVertices.first == inputVertex) {
                 return inputVertex;

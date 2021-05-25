@@ -55,7 +55,7 @@ void testLogic() {
 //        graph.AddEdge(13, 14);
 //        graph.AddEdge(14, 17);
 //        graph.AddEdge(14, 15);
-//        graph.AddEdge(14, 15);
+//        graph.AddEdge(13, 15);
 //        graph.AddEdge(16, 17);
 //        graph.AddEdge(16, 15);
 //        graph.AddEdge(13, 18);
@@ -77,7 +77,8 @@ void testLogic() {
 //        graph.AddEdge(26, 31);
 //        graph.AddEdge(26, 32);
 //
-////        graph.SearchSkeleton(23, 0);
+//        graph.PrintVertices();
+//        graph.SearchSkeletonV2(30, 0);
 //    }
 //
 //    // Graph 3
@@ -328,8 +329,8 @@ void testLogic() {
         graph.AddEdge(40, 15);
         graph.AddEdge(6, 41);
         
-//        graph.PrintVertices();
-//        graph.SearchSkeletonV2(15, 1);
+        graph.PrintVertices();
+        graph.SearchSkeletonV2(15, 1);
     }
     
     {
@@ -378,8 +379,8 @@ void testLogic() {
         graph.AddEdge(5, 17);
         graph.AddEdge(17, 18);
         
-        graph.PrintVertices();
-        graph.SearchSkeletonV2(6, 0);
+//        graph.PrintVertices();
+//        graph.SearchSkeletonV2(6, 0);
     }
 }
 
