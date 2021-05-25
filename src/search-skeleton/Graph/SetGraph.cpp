@@ -176,24 +176,56 @@ std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVe
     std::shared_ptr< std::deque<int> > traversalStack( new std::deque<int>() );;
     
     auto currentVertex = GetVertex(submittedVertex);
-    int size = currentVertex.numberEdges.size();
-    
-    traversalStack->push_back(submittedVertex);
+    auto prevVertexNumber = -1;
+    for (auto iter = currentVertex.numberEdges.begin(); iter != currentVertex.numberEdges.end(); iter++) {
+ 
+        auto edge = GetEdge(*iter, currentVertex.numberVertex);
+        
+        if (edge.label == GraphLabels::visited) {
+            traversalStack->push_back(edge.numberVertices.second);
+            prevVertexNumber = edge.numberVertices.first;
+            
+            std::cout << "Start vertex: " << edge.numberVertices.second << std::endl;
+            
+            break;
+        }
+    }
     
     while(1) {
         auto popedVertex = GetVertex(traversalStack->back());
+        int size = popedVertex.numberEdges.size();
         
-        for (auto iter = popedVertex.numberEdges.begin();
-                iter != popedVertex.numberEdges.end();
-                iter++) {
-            auto edge = GetEdge(*iter, popedVertex.numberVertex);
+        int limitCrawl = 0;
+        int iter = 0;
+        
+        // MARK:- Обход до ребра от которого мы пришли в эту вершину
+        //        От этого ребра далее правым обходом перейдем к
+        //        Посещенному ребру
+        for (iter = 0; iter < size && limitCrawl <= size; limitCrawl++) {
+            auto edge = GetEdge(popedVertex.numberEdges[iter], popedVertex.numberVertex);
             
-            if (edge.label == GraphLabels::visited) {
-                edges[edge.numberEdge].label = GraphLabels::inskeleton;
-                traversalStack->push_back(edge.numberVertices.second);
+            if (edge.numberVertices.second == prevVertexNumber) {
                 break;
             }
+            iter = (iter + 1) % size;
         }
+        
+        // MARK:- Переход к след посещенному ребру (правым обходом)
+        // Например: Из [1, 2, 3(посещ)] в [1, 2, 3(посещ)]
+        //                  ↑                     ↑
+        // Например: Из [1(посещ), 2, 3(не посещ)] в [1(посещ), 2, 3(не посещ)]
+        //                         ↑                  ↑
+        limitCrawl = 0;
+        for (; iter < size && limitCrawl <= size; limitCrawl++) {
+            auto edge = GetEdge(popedVertex.numberEdges[iter], popedVertex.numberVertex);
+            
+            if (edge.numberVertices.second == prevVertexNumber) {
+                break;
+            }
+            iter = (iter + 1) % size;
+        }
+        
+        std::cout << "tochno kek" << std::endl;
     }
     
     return traversalStack;
