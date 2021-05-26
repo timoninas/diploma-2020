@@ -30,6 +30,7 @@ void SetGraph::AddEdge(int from, int to) {
     assert(to < vertices.size());
     assert(from >= 0);
     assert(to >= 0);
+    assert(from != to);
     point_t p1 = vertices[from].point;
     point_t p2 = vertices[to].point;
     edge_t e1{int(edges.size()), p1, p2, from, to};
