@@ -177,17 +177,71 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
         vertices[vertex.numberVertex].label = GraphLabels::inskeleton;
         std::cout << vertex.numberVertex << " ";
     }
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
     
     
     // MARK:- Стек пока вершина не равна выходу - outputVertex
     //        Если дошли до этой вершины, то из нее нет смысла искать
     //        Входящие в нее же ребра
-    std::cout << "Start traversal" << std::endl;
-    while(1) {
-        break;
+    while(!inSkeletonStack->empty() && inSkeletonStack->back() != outputVertex) {
+        auto currentVertexNumber = inSkeletonStack->back();
+        inSkeletonStack->pop_back();
+        
+        auto probablyNewPathStack = LeftTraversalMainPartV2(currentVertexNumber);
+        
+        // MARK:- Если вернулся пустой стек с новой частью остова
+        //        Тогда ничего не делаем
+        // VVV
+        if (probablyNewPathStack->empty()) {
+            std::cout << "STACK IS EMPTY: NOTHING DOING" << std::endl;
+            
+        // MARK:- Если вернулся не пустой стек с новой частью остова
+        //        Тогда добавляем в результирующий стек новые части остова
+        // VVV
+        } else {
+            std::cout << "STACK WITH NEW SKELETON: ADD IN SKELETON STACK" << std::endl;
+        }
     }
+    
+    std::cout << std::endl;
 }
+
+std::shared_ptr<std::deque<int>> SetGraph::LeftTraversalMainPartV2(const int& submittedVertexNumber) {
+    
+    std::shared_ptr< std::deque<int> > traversalStack( new std::deque<int>() );
+    
+    traversalStack->push_back(submittedVertexNumber);
+    
+    while (!traversalStack->empty()) {
+        auto popedVertex = GetVertex(traversalStack->back());
+        bool isFinded = false;
+        bool isFindedSkeleton = false;
+        
+        for (auto iter = popedVertex.numberEdges.cbegin(); iter != popedVertex.numberEdges.cend(); iter++) {
+            
+            auto currentEdge = GetEdge(*iter, popedVertex.numberVertex);
+            
+            if (currentEdge.label != notvisited) {
+                continue;
+            }
+            
+            currentEdge.label = GraphLabels::visited;
+            edges[currentEdge.numberEdge].label = GraphLabels::visited;
+            isFinded = true;
+            std::cout << "kek1" << std::endl;
+        }
+        
+        if (isFinded) {
+            std::cout << "Find not visited vertex" << std::endl;
+        } else {
+            std::cout << "Find visited vertex" << std::endl;
+            traversalStack->pop_back();
+        }
+    }
+    
+    return traversalStack;
+}
+//LeftTraversalBuildingSkeleton
 
 std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVertexNumber, const int& outversalVertexNumber) {
     
