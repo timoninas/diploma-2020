@@ -185,6 +185,7 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     //        Входящие в нее же ребра
     while(!inSkeletonStack->empty() && inSkeletonStack->back() != outputVertex) {
         auto currentVertexNumber = inSkeletonStack->back();
+        std::cout << "Vertex num = " << currentVertexNumber << std::endl;
         inSkeletonStack->pop_back();
         
         auto probablyNewPathStack = LeftTraversalMainPartV2(currentVertexNumber);
@@ -200,6 +201,32 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
         // VVV
         } else {
             std::cout << "STACK WITH NEW SKELETON: ADD IN SKELETON STACK" << std::endl;
+            for (auto iter = probablyNewPathStack->cbegin(); iter != probablyNewPathStack->cend(); iter++) {
+                
+                auto newVertexNumberInSkeleton = *iter;
+                
+                if (GetVertex(newVertexNumberInSkeleton).label != GraphLabels::inskeleton) {
+                    std::cout << "ADD NEW = " << newVertexNumberInSkeleton << std::endl;
+                    vertices[newVertexNumberInSkeleton].label = GraphLabels::inskeleton;
+                    inSkeletonStack->push_back(newVertexNumberInSkeleton);
+                }
+                
+            }
+            
+            while(!probablyNewPathStack->empty()) {
+                
+                auto newVertexInSkeleton = GetVertex(probablyNewPathStack->back());
+                probablyNewPathStack->pop_back();
+                
+                for (auto iter = newVertexInSkeleton.numberEdges.cbegin(); iter != newVertexInSkeleton.numberEdges.cend(); iter++) {
+                    auto tmpEdge = GetEdge(*iter, newVertexInSkeleton.numberVertex);
+                    auto tmpVertex = GetVertex(tmpEdge.numberVertices.second);
+                    if (tmpVertex.label == GraphLabels::inskeleton && tmpEdge.label != GraphLabels::inskeleton) {
+                        edges[tmpEdge.numberEdge].label = GraphLabels::inskeleton;
+                    }
+                    
+                }
+            }
         }
     }
     
