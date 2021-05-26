@@ -193,7 +193,7 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
         //        Тогда ничего не делаем
         // VVV
         if (probablyNewPathStack->empty()) {
-            std::cout << "STACK IS EMPTY: NOTHING DOING" << std::endl;
+//            std::cout << "STACK IS EMPTY: NOTHING DOING" << std::endl;
             
         // MARK:- Если вернулся не пустой стек с новой частью остова
         //        Тогда добавляем в результирующий стек новые части остова
@@ -221,24 +221,60 @@ std::shared_ptr<std::deque<int>> SetGraph::LeftTraversalMainPartV2(const int& su
             
             auto currentEdge = GetEdge(*iter, popedVertex.numberVertex);
             
-            if (currentEdge.label != notvisited) {
+            if (currentEdge.label == GraphLabels::notvisited) {
+                // Помечаем ребро как посещенное
+                currentEdge.label = GraphLabels::visited;
+                edges[currentEdge.numberEdge].label = GraphLabels::visited;
+                
+                isFinded = true; // Пишем, что мы не в пустую ходим по ребрам инцидентным
+                
+                auto nextVertex = GetVertex(currentEdge.numberVertices.second);
+                
+                // MARK:- Смотрим на концевую вершину текущего ребра
+                //        Если оно не посещенное, значит продолжаем поиск остова
+                // VVV
+                if (nextVertex.label == GraphLabels::notvisited) {
+                    std::cout << "Add " << nextVertex.numberVertex << std::endl;
+                    vertices[nextVertex.numberVertex].label = GraphLabels::visited;
+                    traversalStack->push_back(nextVertex.numberVertex);
+                    
+                    break;
+                    
+                // MARK:- Смотрим на концевую вершину текущего ребра
+                //        Если оно в остове, значит завершаем поиск остовной части
+                // VVV
+                } else if (nextVertex.label == GraphLabels::inskeleton) {
+                    std::cout << "Add " << nextVertex.numberVertex << std::endl;
+                    traversalStack->push_back(nextVertex.numberVertex);
+                    isFindedSkeleton = true;
+                    
+                    break;
+                } else {
+                    continue;
+                }
+                
+            } else {
                 continue;
             }
-            
-            currentEdge.label = GraphLabels::visited;
-            edges[currentEdge.numberEdge].label = GraphLabels::visited;
-            isFinded = true;
-            std::cout << "kek1" << std::endl;
         }
         
-        if (isFinded) {
-            std::cout << "Find not visited vertex" << std::endl;
-        } else {
-            std::cout << "Find visited vertex" << std::endl;
+        if (isFindedSkeleton) {
+            int isSameVertexNumber = traversalStack->back();
+            if (submittedVertexNumber == isSameVertexNumber) {
+                traversalStack->clear();
+                return traversalStack;
+            } else {
+                return traversalStack;
+            }
+        }
+        
+        if (!isFinded) {
+            std::cout << "Pop " << traversalStack->back() << std::endl;
             traversalStack->pop_back();
         }
     }
     
+    traversalStack->clear();
     return traversalStack;
 }
 //LeftTraversalBuildingSkeleton
