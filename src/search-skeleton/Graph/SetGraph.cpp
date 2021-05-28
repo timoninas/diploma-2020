@@ -77,14 +77,16 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     return result;
 }
 
-void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
+std::shared_ptr<std::deque<int>> SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
+    std::shared_ptr< std::deque<int> > resultStack( new std::deque<int>() );
+    
     // -----------------------------
     // MARK:- Подготовительная часть
     // -----------------------------
     // MARK:- Проверяем нужно ли вообще обходить граф
     if (inputVertex == outputVertex) {
         LOG("Input and Output vertices match");
-        return;
+        return resultStack;
     }
     
     // MARK:- Сформировать массив для каждой вершины с прилежащими ребрами
@@ -159,7 +161,7 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     // Заканчиваем алгоритм
     if (!isFindOutputVertex) {
         LOG("Not found vertex / Different graph connectivity");
-        return;
+        return resultStack;
     }
     
     LOG("Continue Algorithm");
@@ -175,6 +177,7 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     for (auto iter = inSkeletonStack->begin(); iter != inSkeletonStack->end(); iter++) {
         auto vertex = GetVertex(*iter);
         vertices[vertex.numberVertex].label = GraphLabels::inskeleton;
+        resultStack->push_front(*iter);
         std::cout << vertex.numberVertex << " ";
     }
     std::cout << std::endl << std::endl;
@@ -210,27 +213,31 @@ void SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
                     vertices[newVertexNumberInSkeleton].label = GraphLabels::inskeleton;
                     inSkeletonStack->push_back(newVertexNumberInSkeleton);
                 }
-                
             }
             
             while(!probablyNewPathStack->empty()) {
-                
-                auto newVertexInSkeleton = GetVertex(probablyNewPathStack->back());
-                probablyNewPathStack->pop_back();
+                auto newVertexInSkeleton = GetVertex(probablyNewPathStack->front());
+                probablyNewPathStack->pop_front();
                 
                 for (auto iter = newVertexInSkeleton.numberEdges.cbegin(); iter != newVertexInSkeleton.numberEdges.cend(); iter++) {
                     auto tmpEdge = GetEdge(*iter, newVertexInSkeleton.numberVertex);
                     auto tmpVertex = GetVertex(tmpEdge.numberVertices.second);
                     if (tmpVertex.label == GraphLabels::inskeleton && tmpEdge.label != GraphLabels::inskeleton) {
                         edges[tmpEdge.numberEdge].label = GraphLabels::inskeleton;
+                        resultStack->push_back(newVertexInSkeleton.numberVertex);
                     }
-                    
                 }
             }
         }
     }
     
+    std::cout << std::endl << "Result of Algo working:" << std::endl;
+    for (auto iter = resultStack->cbegin(); iter != resultStack->cend(); iter++) {
+        std::cout << *iter << " ";
+    }
     std::cout << std::endl;
+    
+    return resultStack;
 }
 
 std::shared_ptr<std::deque<int>> SetGraph::LeftTraversalMainPartV2(const int& submittedVertexNumber) {
@@ -304,7 +311,6 @@ std::shared_ptr<std::deque<int>> SetGraph::LeftTraversalMainPartV2(const int& su
     traversalStack->clear();
     return traversalStack;
 }
-//LeftTraversalBuildingSkeleton
 
 std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVertexNumber, const int& outversalVertexNumber) {
     

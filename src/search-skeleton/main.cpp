@@ -1,5 +1,9 @@
 #include "SetGraph.hpp"
 
+bool checkResults(std::shared_ptr< std::deque<int> > result, std::shared_ptr< std::deque<int> > expectedVertex, std::shared_ptr< std::deque<int> > unexpectedVertex);
+
+void printResult(bool isOK);
+
 void testLogic() {
 //    // Graph 1
 //    {
@@ -329,8 +333,12 @@ void testLogic() {
         graph.AddEdge(40, 15);
         graph.AddEdge(6, 41);
         
-        graph.PrintVertices();
-        graph.SearchSkeletonV2(15, 1);
+//        graph.PrintVertices();
+ 
+        std::shared_ptr< std::deque<int> > expectResult( new std::deque<int>{ 15, 14, 13, 12, 9, 7, 5, 4, 3, 2, 1, 15, 25, 24, 23, 20, 19, 18, 17, 16, 16, 26, 27, 28, 30, 31, 32, 7, 8, 3, 33, 34, 35, 36, 37, 38, 39, 40 } );
+        std::shared_ptr< std::deque<int> > unexpectResult( new std::deque<int>{22, 21, 29, 6, 10, 11} );
+
+        printResult(checkResults(graph.SearchSkeletonV2(15, 1), expectResult, unexpectResult));
     }
     
     {
@@ -380,7 +388,49 @@ void testLogic() {
         graph.AddEdge(17, 18);
         
 //        graph.PrintVertices();
-//        graph.SearchSkeletonV2(6, 0);
+ 
+        std::shared_ptr< std::deque<int> > expectResult( new std::deque<int>{0, 1, 2, 3, 4, 5, 6} );
+        std::shared_ptr< std::deque<int> > unexpectResult( new std::deque<int>{7, 13, 17, 19} );
+
+        printResult(checkResults(graph.SearchSkeletonV2(6, 0), expectResult, unexpectResult));
+    }
+}
+
+bool checkResults(std::shared_ptr< std::deque<int> > result, std::shared_ptr< std::deque<int> > expectedVertex, std::shared_ptr< std::deque<int> > unexpectedVertex) {
+    for (auto iterRes = result->cbegin(); iterRes != result->cend(); iterRes++) {
+        bool isFind = false;
+        for (auto iterExpect = expectedVertex->cbegin(); iterExpect != expectedVertex->cend(); iterExpect++) {
+            if (*iterRes == *iterExpect) {
+                isFind = true;
+            }
+        }
+        
+        if (!isFind) {
+            return false;
+        }
+    }
+    
+    for (auto iterRes = result->cbegin(); iterRes != result->cend(); iterRes++) {
+        bool isFind = false;
+        for (auto iterUnexpect = unexpectedVertex->cbegin(); iterUnexpect != unexpectedVertex->cend(); iterUnexpect++) {
+            if (*iterRes == *iterUnexpect) {
+                isFind = true;
+            }
+        }
+        
+        if (isFind) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+void printResult(bool isOK) {
+    if (isOK) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "NOT OK" << std::endl;
     }
 }
 
