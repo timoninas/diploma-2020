@@ -37,6 +37,8 @@ struct IGraph {
     
     virtual std::shared_ptr<std::deque<int>> SearchSkeletonV2(const int inputVertex, const int outputVertex) = 0;
     
+    virtual std::shared_ptr<std::deque<int>> SearchSkeletonV2(const point_t inputPoint, const point_t outputPoint) = 0;
+    
     virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
     
     virtual std::shared_ptr<std::deque<int>> RightTraversal(const int& submittedVertexNumber, const int& outversalVertexNumber) = 0;

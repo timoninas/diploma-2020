@@ -424,11 +424,99 @@ void testLogic() {
         graph.AddVertex({9, -16}); // 20
         graph.AddVertex({4, -16}); // 21
         
-        graph.AddEdge({0, 0}, {4, -16});
+        graph.AddEdge({0, 0}, {3, -3});
+        graph.AddEdge({3, -3}, {10, -1});
+        graph.AddEdge({10, -1}, {15, 3});
+        graph.AddEdge({15, 3}, {22, 0});
+        graph.AddEdge({22, 0}, {27, -3});
+        graph.AddEdge({27, -3}, {30, -5});
+        graph.AddEdge({3, -3}, {7, -5});
+        graph.AddEdge({7, -5}, {11, -7});
+        graph.AddEdge({11, -7}, {16, -5});
+        graph.AddEdge({16, -5}, {14, -2});
+        graph.AddEdge({14, -2}, {19, -2});
+        graph.AddEdge({19, -2}, {16, -5});
+        graph.AddEdge({16, -5}, {24, -6});
+        graph.AddEdge({24, -6}, {30, -5});
+        graph.AddEdge({30, -5}, {25, -9});
+        graph.AddEdge({25, -9}, {20, -12});
+        graph.AddEdge({20, -12}, {15, -11});
+        graph.AddEdge({15, -11}, {10, -10});
+        graph.AddEdge({10, -10}, {7, -5});
+        graph.AddEdge({15, -11}, {12, -13});
+        graph.AddEdge({12, -13}, {7, -14});
+        graph.AddEdge({7, -14}, {9, -16});
+        graph.AddEdge({9, -16}, {4, -16});
+        graph.AddEdge({4, -16}, {7, -14});
         
-        graph.PrintVertices();
-        graph.PrintEdges();
+//        graph.PrintVertices();
+//        graph.PrintEdges();
+//
+        auto result = graph.SearchSkeletonV2({30, -5}, {0, 0});
+    }
+    
+    // Graph 7
+    {
+        SetGraph graph;
         
+        graph.AddVertex({0, 0}); // 0
+        graph.AddVertex({5, 0}); // 1
+        graph.AddVertex({10, 0}); // 2
+        graph.AddVertex({15, 0}); // 3
+        graph.AddVertex({20, 0}); // 4
+        graph.AddVertex({10, -3}); // 5
+        graph.AddVertex({15, -5}); // 6
+        graph.AddVertex({12, -7}); // 7
+        graph.AddVertex({13, -9}); // 8
+        graph.AddVertex({20, -11}); // 9
+        graph.AddVertex({11, -11}); // 10
+        graph.AddVertex({15, -12}); // 11
+        graph.AddVertex({15, -16}); // 12
+        graph.AddVertex({13, -14}); // 13
+        graph.AddVertex({10, -18}); // 14
+        graph.AddVertex({9, -14}); // 15
+        graph.AddVertex({5, -16}); // 16
+        graph.AddVertex({6, -13}); // 17
+        graph.AddVertex({3, -12}); // 18
+        graph.AddVertex({0, -12}); // 19
+        graph.AddVertex({5, -9}); // 20
+        graph.AddVertex({-3, -11}); // 21
+        graph.AddVertex({-1, -8}); // 22
+        graph.AddVertex({5, -5}); // 23
+        graph.AddVertex({7, -8}); // 24
+        
+        graph.AddEdge({0, 0}, {5, 0});
+        graph.AddEdge({5, 0}, {10, 0});
+        graph.AddEdge({10, 0}, {15, 0});
+        graph.AddEdge({15, 0}, {20, 0});
+        graph.AddEdge({10, 0}, {10, -3});
+        graph.AddEdge({10, -3}, {15, -5});
+        graph.AddEdge({15, -5}, {12, -7});
+        graph.AddEdge({15, -5}, {13, -9});
+        graph.AddEdge({15, -5}, {20, -11});
+        graph.AddEdge({20, -11}, {11, -11});
+        graph.AddEdge({20, -11}, {15, -12});
+        graph.AddEdge({20, -11}, {15, -16});
+        graph.AddEdge({15, -16}, {15, -12});
+        graph.AddEdge({15, -16}, {13, -14});
+        graph.AddEdge({15, -16}, {10, -18});
+        graph.AddEdge({10, -18}, {9, -14});
+        graph.AddEdge({10, -18}, {5, -16});
+        graph.AddEdge({5, -16}, {6, -13});
+        graph.AddEdge({5, -16}, {3, -12});
+        graph.AddEdge({5, -16}, {0, -12});
+        graph.AddEdge({0, -12}, {5, -9});
+        graph.AddEdge({0, -12}, {-3, -11});
+        graph.AddEdge({0, -12}, {-1, -8});
+        graph.AddEdge({0, -12}, {5, -5});
+        graph.AddEdge({5, -5}, {7, -8});
+        graph.AddEdge({5, -5}, {10, -3});
+        
+//        graph.PrintVertices();
+//        graph.PrintEdges();
+        
+//        auto result = graph.SearchSkeletonV2(4, 0);
+//        auto result = graph.SearchSkeletonV2({20, 0}, {-3, -11});
     }
 }
 

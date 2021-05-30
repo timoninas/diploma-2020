@@ -128,6 +128,32 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     return result;
 }
 
+std::shared_ptr<std::deque<int>> SetGraph::SearchSkeletonV2(const point_t inputPoint, const point_t outputPoint) {
+    int inputVertex = -1;
+    int outputVertex = -1;
+    
+    for (auto iter = vertices.cbegin(); iter != vertices.cend(); iter++) {
+        auto vertex = *iter;
+        
+        if (inputPoint.x == vertex.point.x && inputPoint.y == vertex.point.y) {
+            inputVertex = vertex.numberVertex;
+        }
+        
+        if (outputPoint.x == vertex.point.x && outputPoint.y == vertex.point.y) {
+            outputVertex = vertex.numberVertex;
+        }
+    }
+    
+    
+    
+    if (inputVertex == -1 || outputVertex == -1) {
+        std::shared_ptr< std::deque<int> > nothing( new std::deque<int>() );
+        return nothing;
+    }
+    
+    return SearchSkeletonV2(inputVertex, outputVertex);
+}
+
 std::shared_ptr<std::deque<int>> SetGraph::SearchSkeletonV2(const int inputVertex, const int outputVertex) {
     std::shared_ptr< std::deque<int> > resultStack( new std::deque<int>() );
     

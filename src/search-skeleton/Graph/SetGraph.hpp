@@ -29,6 +29,8 @@ public:
     
     std::shared_ptr<std::deque<int>> SearchSkeletonV2(const int inputVertex, const int outputVertex) override;
     
+    std::shared_ptr<std::deque<int>> SearchSkeletonV2(const point_t inputPoint, const point_t outputPoint) override;
+    
 private:
     std::vector< std::unordered_set< int > > graph;
     std::vector< vertex_v2_t > vertices;
