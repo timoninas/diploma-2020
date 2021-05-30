@@ -13,9 +13,13 @@
 struct IGraph {
     virtual ~IGraph() {}
     
-    virtual void AddVertex(double x, double y) = 0;
+    virtual bool AddVertex(double x, double y) = 0;
     
-    virtual void AddEdge(int from, int to) = 0;
+    virtual bool AddVertex(point_t p) = 0;
+    
+    virtual bool AddEdge(int from, int to) = 0;
+    
+    virtual bool AddEdge(point_t p1, point_t p2) = 0;
     
     virtual const vertex_v2_t& GetVertex(int at) = 0;
     
@@ -26,6 +30,8 @@ struct IGraph {
     virtual int VerticesCount() const = 0;
     
     virtual void PrintVertices() const = 0;
+    
+    virtual void PrintEdges() const = 0;
     
     virtual void SearchSkeleton(int inputVertex, int outputVertex) = 0;
     

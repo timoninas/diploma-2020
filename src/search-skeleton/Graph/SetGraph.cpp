@@ -12,9 +12,21 @@ int SetGraph::VerticesCount() const {
     return graph.size();
 }
 
-void SetGraph::AddVertex(double x, double y) {
+bool SetGraph::AddVertex(double x, double y) {
+    for (auto iter = vertices.cbegin(); iter != vertices.cend(); iter++) {
+        auto vertex = *iter;
+        if (vertex.point.x == x && vertex.point.y == y) {
+            return false;
+        }
+    }
+    
     vertex_v2_t v{x, y, int(vertices.size())};
     vertices.push_back(v);
+    return true;
+}
+
+bool SetGraph::AddVertex(point_t p) {
+    return AddVertex(p.x, p.y);
 }
 
 void SetGraph::PrintVertices() const {
@@ -25,7 +37,14 @@ void SetGraph::PrintVertices() const {
     }
 }
 
-void SetGraph::AddEdge(int from, int to) {
+void SetGraph::PrintEdges() const {
+    for (auto item: edges) {
+        std::cout << "\nEdge:" << std::endl;
+        std::cout << item.numberEdge << " : [" << item.numberVertices.first << "](" << item.points.first.x << "," << item.points.first.y << "), " << "[" << item.numberVertices.second << "](" << item.points.second.x << "," << item.points.second.y << ")" << std::endl;
+    }
+}
+
+bool SetGraph::AddEdge(int from, int to) {
     assert(from < vertices.size());
     assert(to < vertices.size());
     assert(from >= 0);
@@ -35,6 +54,38 @@ void SetGraph::AddEdge(int from, int to) {
     point_t p2 = vertices[to].point;
     edge_t e1{int(edges.size()), p1, p2, from, to};
     edges.push_back(e1);
+    return true;
+}
+
+bool SetGraph::AddEdge(point_t p1, point_t p2) {
+    int from = -1;
+    int to = -1;
+    for (auto iter = vertices.cbegin(); iter != vertices.cend(); iter++) {
+        auto vertex = *iter;
+        
+        if (vertex.point.x == p1.x && vertex.point.y == p1.y) {
+            from = vertex.numberVertex;
+        }
+        
+        if (vertex.point.x == p2.x && vertex.point.y == p2.y) {
+            to = vertex.numberVertex;
+        }
+    }
+    
+    if (from == -1 || to == -1) {
+        return false;
+    }
+    
+    for (auto iter = edges.cbegin(); iter != edges.cend(); iter++) {
+        auto edge = *iter;
+        
+        if ((edge.numberVertices.first == from && edge.numberVertices.second == to) ||
+            (edge.numberVertices.first == to && edge.numberVertices.second == from)) {
+            return false;
+        }
+    }
+    
+    return AddEdge(from, to);;
 }
 
 const vertex_v2_t& SetGraph::GetVertex(int at) {

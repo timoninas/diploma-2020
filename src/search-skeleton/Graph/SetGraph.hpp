@@ -13,11 +13,17 @@ public:
     
     int VerticesCount() const override;
     
-    void AddVertex(double x, double y) override;
+    bool AddVertex(double x, double y) override;
     
-    void AddEdge(int from, int to) override;
+    bool AddVertex(point_t p) override;
+    
+    bool AddEdge(int from, int to) override;
+    
+    bool AddEdge(point_t p1, point_t p2) override;
     
     void PrintVertices() const override;
+    
+    void PrintEdges() const override;
     
     void SearchSkeleton(int inputVertex, int outputVertex) override;
     

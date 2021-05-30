@@ -342,6 +342,7 @@ void testLogic() {
         printResult(checkResults(result, expectResult, unexpectResult));
     }
     
+    // Graph 5
     {
         SetGraph graph;
         
@@ -394,6 +395,40 @@ void testLogic() {
         std::shared_ptr< std::deque<int> > unexpectResult( new std::deque<int>{7, 13, 17, 19} );
 
         printResult(checkResults(graph.SearchSkeletonV2(6, 0), expectResult, unexpectResult));
+    }
+    
+    // Graph 6
+    {
+        SetGraph graph;
+        
+        graph.AddVertex({0, 0}); // 0
+        graph.AddVertex({3, -3}); // 1
+        graph.AddVertex({7, -5}); // 2
+        graph.AddVertex({10, -1}); // 3
+        graph.AddVertex({15, 3}); // 4
+        graph.AddVertex({22, 0}); // 5
+        graph.AddVertex({27, -3}); // 6
+        graph.AddVertex({30, -5}); // 7
+        graph.AddVertex({14, -2}); // 8
+        graph.AddVertex({19, -2}); // 9
+        graph.AddVertex({16, -5}); // 10
+        graph.AddVertex({11, -7}); // 11
+        graph.AddVertex({17, -8}); // 12
+        graph.AddVertex({24, -6}); // 13
+        graph.AddVertex({25, -9}); // 14
+        graph.AddVertex({20, -12}); // 15
+        graph.AddVertex({15, -11}); // 16
+        graph.AddVertex({10, -10}); // 17
+        graph.AddVertex({12, -13}); // 18
+        graph.AddVertex({7, -14}); // 19
+        graph.AddVertex({9, -16}); // 20
+        graph.AddVertex({4, -16}); // 21
+        
+        graph.AddEdge({0, 0}, {4, -16});
+        
+        graph.PrintVertices();
+        graph.PrintEdges();
+        
     }
 }
 
