@@ -335,10 +335,11 @@ void testLogic() {
         
 //        graph.PrintVertices();
  
+        auto result = graph.SearchSkeletonV2(15, 1);
         std::shared_ptr< std::deque<int> > expectResult( new std::deque<int>{ 15, 14, 13, 12, 9, 7, 5, 4, 3, 2, 1, 15, 25, 24, 23, 20, 19, 18, 17, 16, 16, 26, 27, 28, 30, 31, 32, 7, 8, 3, 33, 34, 35, 36, 37, 38, 39, 40 } );
         std::shared_ptr< std::deque<int> > unexpectResult( new std::deque<int>{22, 21, 29, 6, 10, 11} );
 
-        printResult(checkResults(graph.SearchSkeletonV2(15, 1), expectResult, unexpectResult));
+        printResult(checkResults(result, expectResult, unexpectResult));
     }
     
     {
