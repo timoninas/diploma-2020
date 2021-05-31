@@ -27,6 +27,8 @@ public:
     
     void SearchSkeleton(int inputVertex, int outputVertex) override;
     
+    std::shared_ptr<std::deque<std::pair<point_t, point_t>>> GetSkeleton() override;
+    
     std::shared_ptr<std::deque<int>> SearchSkeletonV2(const int inputVertex, const int outputVertex) override;
     
     std::shared_ptr<std::deque<int>> SearchSkeletonV2(const point_t inputPoint, const point_t outputPoint) override;
@@ -51,6 +53,7 @@ private:
     int LeftTraversalWithInitializationV2(const int& submittedVertex, const int& inputVertex, const int& outputVertex) override;
     
     std::shared_ptr<std::deque<int>> LeftTraversalMainPartV2(const int& submittedVertexNumber) override;
+    std::shared_ptr<std::deque<int>> LeftTraversalMainPartV2(const int& submittedVertexNumber, const int& submittedEdgeNumber, const int& isSameVertexNumber) override;
     
     std::shared_ptr<std::deque<int>> LeftTraversalBuildingSkeleton(const int& currentVertexNumber) override;
     

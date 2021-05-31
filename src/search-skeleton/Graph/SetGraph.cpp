@@ -128,6 +128,20 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     return result;
 }
 
+std::shared_ptr<std::deque<std::pair<point_t, point_t>>> SetGraph::GetSkeleton() {
+    std::shared_ptr< std::deque< std::pair <point_t, point_t> > > skeleton( new std::deque< std::pair  <point_t, point_t> >() );
+    
+    for (auto iter = edges.cbegin(); iter != edges.cend(); iter++) {
+        auto edge = *iter;
+        
+        if (edge.label == GraphLabels::inskeleton) {
+            skeleton->push_back(std::make_pair(edge.points.first, edge.points.second));
+        }
+    }
+    
+    return skeleton;
+}
+
 std::shared_ptr<std::deque<int>> SetGraph::SearchSkeletonV2(const point_t inputPoint, const point_t outputPoint) {
     int inputVertex = -1;
     int outputVertex = -1;
@@ -260,6 +274,10 @@ std::shared_ptr<std::deque<int>> SetGraph::SearchSkeletonV2(const int inputVerte
     std::cout << std::endl << std::endl;
     
     
+    // -----------------------------
+    // MARK:- Начало алгоритма
+    //        1. Построение остова
+    // -----------------------------
     // MARK:- Стек пока вершина не равна выходу - outputVertex
     //        Если дошли до этой вершины, то из нее нет смысла искать
     //        Входящие в нее же ребра
@@ -268,18 +286,31 @@ std::shared_ptr<std::deque<int>> SetGraph::SearchSkeletonV2(const int inputVerte
         std::cout << "Vertex num = " << currentVertexNumber << std::endl;
         inSkeletonStack->pop_back();
         
-        auto probablyNewPathStack = LeftTraversalMainPartV2(currentVertexNumber);
-        
-        // MARK:- Если вернулся пустой стек с новой частью остова
-        //        Тогда ничего не делаем
-        // VVV
-        if (probablyNewPathStack->empty()) {
-//            std::cout << "STACK IS EMPTY: NOTHING DOING" << std::endl;
+        // От остовной вершины начинаем обходить все непосещенные ребра
+        // Подаем в функцию номер непосещнного ребра и вершину инцидентную данному ребру
+        // И номер вершины, от которой начинаем этот обход, чтобы по ней сравнивать
+        // Добавлять новую часть в остов или нет
+        // На выходе получаем возможно новую часть остова
+        auto currentVertex = GetVertex(currentVertexNumber);
+        for (auto iter = currentVertex.numberEdges.cbegin(); iter != currentVertex.numberEdges.cend(); iter++) {
             
-        // MARK:- Если вернулся не пустой стек с новой частью остова
-        //        Тогда добавляем в результирующий стек новые части остова
-        // VVV
-        } else {
+            auto edge = GetEdge(*iter, currentVertex.numberVertex);
+            if (edge.label != GraphLabels::notvisited ) { continue; }
+            
+            // Левый обход по непосещенным еще вершинам
+            auto probablyNewPathStack = LeftTraversalMainPartV2(edge.numberVertices.second, edge.numberEdge, currentVertex.numberVertex);
+            
+            // MARK:- Если вернулся пустой стек с новой частью остова
+            //        Тогда ничего не делаем
+            // VVV
+            if (probablyNewPathStack->empty()) {
+                std::cout << "STACK IS EMPTY: NOTHING DOING" << std::endl;
+                continue;
+            }
+            
+            // MARK:- Если вернулся не пустой стек с новой частью остова
+            //        Тогда добавляем в результирующий стек новые части остова
+            // VVV
             std::cout << "STACK WITH NEW SKELETON: ADD IN SKELETON STACK" << std::endl;
             for (auto iter = probablyNewPathStack->cbegin(); iter != probablyNewPathStack->cend(); iter++) {
                 
@@ -315,6 +346,114 @@ std::shared_ptr<std::deque<int>> SetGraph::SearchSkeletonV2(const int inputVerte
     std::cout << std::endl;
     
     return resultStack;
+}
+
+std::shared_ptr<std::deque<int>> SetGraph::LeftTraversalMainPartV2(const int& submittedVertexNumber, const int& submittedEdgeNumber, const int& isSameVertexNumber) {
+    std::shared_ptr< std::deque<std::pair<int, int>> > traversalStack( new std::deque<std::pair<int, int>>() );
+    
+    traversalStack->push_back(std::make_pair(submittedVertexNumber, submittedEdgeNumber));
+    
+    while (!traversalStack->empty()) {
+        auto popedElement = traversalStack->back();
+        auto popedVertex = GetVertex(popedElement.first);
+        auto popedEdgeNumberFrom = popedElement.second;
+        int size = popedVertex.numberEdges.size();
+        bool isFinded = false;
+        bool isFindedSkeleton = false;
+        
+        int limitCrawl = 0;
+        int iter = 0;
+        
+        // MARK:- Обход до ребра от которого мы пришли в эту вершину
+        //        От этого ребра далее правым обходом перейдем к
+        //        Посещенному ребру
+        for (iter = 0; iter < size && limitCrawl <= size; limitCrawl++) {
+            auto edge = GetEdge(popedVertex.numberEdges[iter], popedVertex.numberVertex);
+            
+            if (edge.numberEdge == popedEdgeNumberFrom) {
+                iter = (iter + 1) % size;
+                break;
+            }
+            iter = (iter + 1) % size;
+        }
+        
+        // MARK:- Переход к след посещенному ребру (правым обходом)
+        // Например: Из [1, 2, 3(посещ)] в [1, 2, 3(посещ)]
+        //                  ↑                     ↑
+        // Например: Из [1(посещ), 2, 3(не посещ)] в [1(посещ), 2, 3(не посещ)]
+        //                         ↑                  ↑
+        limitCrawl = 0;
+        for (; iter < size && limitCrawl <= size; limitCrawl++) {
+            auto currentEdge = GetEdge(popedVertex.numberEdges[iter], popedVertex.numberVertex);
+            
+            if (currentEdge.label == GraphLabels::notvisited) {
+                
+                // Помечаем ребро как посещенное
+                currentEdge.label = GraphLabels::visited;
+                edges[currentEdge.numberEdge].label = GraphLabels::visited;
+                
+                isFinded = true;
+                
+                auto nextVertex = GetVertex(currentEdge.numberVertices.second);
+                
+                // MARK:- Смотрим на концевую вершину текущего ребра
+                //        Если оно не посещенное, значит продолжаем поиск остова
+                // VVV
+                if (nextVertex.label == GraphLabels::notvisited) {
+                    std::cout << "Add " << nextVertex.numberVertex << std::endl;
+                    vertices[nextVertex.numberVertex].label = GraphLabels::visited;
+                    traversalStack->push_back(std::make_pair(nextVertex.numberVertex, currentEdge.numberEdge));
+                    
+                    break;
+                    
+                    // MARK:- Смотрим на концевую вершину текущего ребра
+                    //        Если оно в остове, значит завершаем поиск остовной части
+                    // VVV
+                } else if (nextVertex.label == GraphLabels::inskeleton) {
+                    std::cout << "Add " << nextVertex.numberVertex << std::endl;
+                    traversalStack->push_back(std::make_pair(nextVertex.numberVertex, currentEdge.numberEdge));
+                    isFindedSkeleton = true;
+                    
+                    break;
+                } else {
+                    iter = (iter + 1) % size;
+                    continue;
+                }
+                break;
+            } else {
+                iter = (iter + 1) % size;
+                continue;
+            }
+        }
+        
+        if (isFindedSkeleton) {
+            auto backItem = traversalStack->back();
+            if (backItem.first == isSameVertexNumber) {
+                traversalStack->clear();
+                
+                std::shared_ptr< std::deque<int> > empty( new std::deque<int>() );
+                
+                return empty;
+            } else {
+                std::shared_ptr< std::deque<int> > traversal( new std::deque<int>() );
+                for (auto iter = traversalStack->cbegin(); iter != traversalStack->cend(); iter++) {
+                    auto item = *iter;
+                    std::cout << item.first << " ";
+                    traversal->push_back(item.first);
+                }
+                std::cout << std::endl;
+                return traversal;
+            }
+        }
+        
+        if (!isFinded) {
+            std::cout << "Pop " << traversalStack->back().first << " " << traversalStack->back().second << std::endl;
+            traversalStack->pop_back();
+        }
+    }
+    
+    std::shared_ptr< std::deque<int> > empty( new std::deque<int>() );
+    return empty;
 }
 
 std::shared_ptr<std::deque<int>> SetGraph::LeftTraversalMainPartV2(const int& submittedVertexNumber) {
@@ -403,7 +542,7 @@ std::shared_ptr<std::deque<int>> SetGraph::RightTraversal(const int& submittedVe
     //        По всем остальным ребрам идем, зная от какого ребра
     //        Пришли в данную вершину
     for (auto iter = currentVertex.numberEdges.begin(); iter != currentVertex.numberEdges.end(); iter++) {
- 
+        
         auto edge = GetEdge(*iter, currentVertex.numberVertex);
         
         if (edge.label == GraphLabels::visited) {
@@ -537,9 +676,9 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
                 
                 break;
                 
-            // MARK:- Случай, когда мы зашли в тупик и нам нужно выбраться
-            //        Поэтому следуем по посещнным ребрам, левым обходом
-            // VVV
+                // MARK:- Случай, когда мы зашли в тупик и нам нужно выбраться
+                //        Поэтому следуем по посещнным ребрам, левым обходом
+                // VVV
             } else if (edge.label == GraphLabels::visited) {
                 prevVertexNumber = currentVertex.numberVertex;
                 currentVertex = GetVertex(edge.numberVertices.second);
@@ -549,9 +688,9 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
                 
                 break;
                 
-            // MARK:- Случай, когда дошли до мертвого ребра, который
-            //        Всегда ведет в тупик
-            // VVV
+                // MARK:- Случай, когда дошли до мертвого ребра, который
+                //        Всегда ведет в тупик
+                // VVV
             } else if (edge.label == GraphLabels::dead) {
                 iter = (iter + 1) % size;
                 
@@ -559,13 +698,13 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
                 
                 continue;
                 
-            // MARK:- Случай. Нереальный
-            // VVV
+                // MARK:- Случай. Нереальный
+                // VVV
             } else if (edge.label == GraphLabels::inskeleton) {
                 assert(0);
                 
-            // MARK:- Случай. Нереальный
-            // VVV
+                // MARK:- Случай. Нереальный
+                // VVV
             } else {
                 assert(0);
             }
@@ -573,9 +712,9 @@ int SetGraph::LeftTraversalWithInitializationV2(const int& submittedVertex, cons
         }
         
         // Если прошли по кругу и нет никакого результата
-//        if (limitCrawl > size) {
-//            return inputVertex;
-//        }
+        //        if (limitCrawl > size) {
+        //            return inputVertex;
+        //        }
     }
     
     return 0;
@@ -727,7 +866,7 @@ std::shared_ptr<std::deque<int>> SetGraph::LeftTraversalWithInitialization(const
                     break;
                 } else {
                     // CASE с встречой цикла
-//                    visitInnerEdges(tmpVertex.numberVertex, iteratedEdge.numberEdge);
+                    //                    visitInnerEdges(tmpVertex.numberVertex, iteratedEdge.numberEdge);
                 }
             }
         }
@@ -823,7 +962,7 @@ void SetGraph::visitInnerEdges(const int& repeatedVertex, const int& numberEdge)
         if (isFind == true) {
             if (tmpEdge.isVisited()) {
                 std::cout << "FINDED CYCLE 2 EDGE " << tmpEdge.numberVertices.first << " " << tmpEdge.numberVertices.second << std::endl;
-//                break;
+                //                break;
             }
         } else {
             if (tmpEdge.numberEdge == numberEdge) {
@@ -857,8 +996,8 @@ void SetGraph::MarkSkeletonVerteciesAndEdges(std::shared_ptr<std::deque<int>> ne
         for (auto iterPair = pairEdgesInSekelton.begin(); iterPair != pairEdgesInSekelton.end(); iterPair++) {
             auto tmpPair = (*iterPair);
             if  ((tmpPair.first == tmpEdge.numberVertices.first &&
-                 tmpPair.second == tmpEdge.numberVertices.second) ||
-                (tmpPair.second == tmpEdge.numberVertices.first &&
+                  tmpPair.second == tmpEdge.numberVertices.second) ||
+                 (tmpPair.second == tmpEdge.numberVertices.first &&
                   tmpPair.first == tmpEdge.numberVertices.second)) {
                 edges[tmpEdge.numberEdge].label = GraphLabels::inskeleton;
             }

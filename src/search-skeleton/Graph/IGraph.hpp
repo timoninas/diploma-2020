@@ -39,6 +39,8 @@ struct IGraph {
     
     virtual std::shared_ptr<std::deque<int>> SearchSkeletonV2(const point_t inputPoint, const point_t outputPoint) = 0;
     
+    virtual std::shared_ptr<std::deque<std::pair<point_t, point_t>>> GetSkeleton() = 0;
+    
     virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
     
     virtual std::shared_ptr<std::deque<int>> RightTraversal(const int& submittedVertexNumber, const int& outversalVertexNumber) = 0;
@@ -46,6 +48,8 @@ struct IGraph {
     virtual std::shared_ptr<std::deque<int>> LeftTraversalWithInitialization(const int& currentVertexNumber, const int& stopVertexNumber) = 0;
     
     virtual std::shared_ptr<std::deque<int>> LeftTraversalMainPartV2(const int& submittedVertexNumber) = 0;
+    
+    virtual std::shared_ptr<std::deque<int>> LeftTraversalMainPartV2(const int& submittedVertexNumber, const int& submittedEdgeNumber, const int& isSameVertexNumber) = 0;
     
     virtual int LeftTraversalWithInitializationV2(const int& submittedVertex, const int& inputVertex, const int& outputVertex) = 0;
     
