@@ -1,5 +1,7 @@
 #include "SetGraph.hpp"
 
+#define PREC 1.e-10
+
 SetGraph::SetGraph(const IGraph& sendedGraph) {
     graph.resize(sendedGraph.VerticesCount());
 }
@@ -15,7 +17,7 @@ int SetGraph::VerticesCount() const {
 bool SetGraph::AddVertex(double x, double y) {
     for (auto iter = vertices.cbegin(); iter != vertices.cend(); iter++) {
         auto vertex = *iter;
-        if (vertex.point.x == x && vertex.point.y == y) {
+        if ( fabs(vertex.point.x - x) < PREC && fabs(vertex.point.y - y) < PREC ) {
             return false;
         }
     }
@@ -60,14 +62,15 @@ bool SetGraph::AddEdge(int from, int to) {
 bool SetGraph::AddEdge(point_t p1, point_t p2) {
     int from = -1;
     int to = -1;
+    
     for (auto iter = vertices.cbegin(); iter != vertices.cend(); iter++) {
         auto vertex = *iter;
         
-        if (vertex.point.x == p1.x && vertex.point.y == p1.y) {
+        if ( fabs(vertex.point.x - p1.x) < PREC && fabs(vertex.point.y - p1.y) < PREC ) {
             from = vertex.numberVertex;
         }
         
-        if (vertex.point.x == p2.x && vertex.point.y == p2.y) {
+        if ( fabs(vertex.point.x - p2.x) < PREC && fabs(vertex.point.y - p2.y) < PREC ) {
             to = vertex.numberVertex;
         }
     }
@@ -85,7 +88,7 @@ bool SetGraph::AddEdge(point_t p1, point_t p2) {
         }
     }
     
-    return AddEdge(from, to);;
+    return AddEdge(from, to);
 }
 
 const vertex_v2_t& SetGraph::GetVertex(int at) {

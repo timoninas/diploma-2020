@@ -739,7 +739,7 @@ void testLogic() {
 //        }
     }
     
-    // Egora Graph
+    // Egora Graph 1
     {
         SetGraph graph;
         
@@ -756,6 +756,39 @@ void testLogic() {
         graph.AddEdge({0, 0}, {5, -2});
         
         auto result = graph.SearchSkeletonV2({24, 4}, {0, 0});
+        auto skeleton = graph.GetSkeleton();
+        for (auto iter = skeleton->cbegin(); iter != skeleton->cend(); iter++) {
+            auto points = *iter;
+            auto pointFirst = get<0>(points);
+            auto pointSecond = get<1>(points);
+            std::cout << "(" << pointFirst.x << "; " << pointFirst.y << ") -- (" << pointSecond.x << "; " << pointSecond.y << ")" << std::endl;
+        }
+    }
+    
+    // Egora Graph 2
+    {
+        SetGraph graph;
+        
+        graph.AddVertex({0, 0});
+        graph.AddVertex({6, -5});
+        graph.AddVertex({11, -4});
+        graph.AddVertex({12, -7});
+        graph.AddVertex({14, 6});
+        graph.AddVertex({21, -3});
+        graph.AddVertex({27, 0});
+        
+        graph.AddEdge({0, 0}, {6, -5});
+        graph.AddEdge({6, -5}, {12, -7});
+        graph.AddEdge({6, -5}, {11, -4});
+        graph.AddEdge({6, -5}, {14, 6});
+        graph.AddEdge({12, -7}, {11, -4});
+        graph.AddEdge({12, -7}, {21, -3});
+        graph.AddEdge({11, -4}, {21, -3});
+        graph.AddEdge({11, -4}, {14, 6});
+        graph.AddEdge({14, 6}, {21, -3});
+        graph.AddEdge({21, -3}, {27, 0});
+        
+        auto result = graph.SearchSkeletonV2({27, 0}, {0, 0});
         auto skeleton = graph.GetSkeleton();
         for (auto iter = skeleton->cbegin(); iter != skeleton->cend(); iter++) {
             auto points = *iter;
