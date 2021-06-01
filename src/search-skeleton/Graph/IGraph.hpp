@@ -5,10 +5,10 @@
 #include "../Helpers/Libraries/Libraries.hpp"
 
 #include "AngleOperations.hpp"
-#include "../Model/Edge/Edge V1/Edge.hpp"
-#include "../Model/Edge/Edge V2/EdgeV2.hpp"
-#include "../Model/Vertex/Vertex V1/Vertex.hpp"
-#include "../Model/Vertex/Vertex V2/VertexV2.hpp"
+#include "../Model/Edge/Edge_V1/Edge.hpp"
+#include "../Model/Edge/Edge_V2/EdgeV2.hpp"
+#include "../Model/Vertex/Vertex_V1/Vertex.hpp"
+#include "../Model/Vertex/Vertex_V2/VertexV2.hpp"
 
 struct IGraph {
     virtual ~IGraph() {}
@@ -39,7 +39,7 @@ struct IGraph {
     
     virtual std::shared_ptr<std::deque<int>> SearchSkeletonV2(const point_t inputPoint, const point_t outputPoint) = 0;
     
-    virtual std::shared_ptr<std::deque<std::pair<point_t, point_t>>> GetSkeleton() = 0;
+    virtual std::shared_ptr<std::deque<std::tuple<point_t, point_t, int>>> GetSkeleton() = 0;
     
     virtual std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const = 0;
     

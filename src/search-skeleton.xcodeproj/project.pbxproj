@@ -101,19 +101,19 @@
 			path = "search-skeleton";
 			sourceTree = "<group>";
 		};
-		773FF06825CD7C790085B132 /* Edge V1 */ = {
+		773FF06825CD7C790085B132 /* Edge_V1 */ = {
 			isa = PBXGroup;
 			children = (
 				773FF05825CD7BC60085B132 /* Edge.cpp */,
 				773FF05925CD7BC60085B132 /* Edge.hpp */,
 			);
-			path = "Edge V1";
+			path = Edge_V1;
 			sourceTree = "<group>";
 		};
 		773FF06A25CD7C7E0085B132 /* Point */ = {
 			isa = PBXGroup;
 			children = (
-				77CB2233261B1A900027FAF5 /* Point V1 */,
+				77CB2233261B1A900027FAF5 /* Point_V1 */,
 			);
 			path = Point;
 			sourceTree = "<group>";
@@ -151,8 +151,8 @@
 		773FF07A25CD7E440085B132 /* Vertex */ = {
 			isa = PBXGroup;
 			children = (
-				77CB223C261B1BB20027FAF5 /* Vertex V1 */,
-				77CB2242261B1BED0027FAF5 /* Vertex V2 */,
+				77CB223C261B1BB20027FAF5 /* Vertex_V1 */,
+				77CB2242261B1BED0027FAF5 /* Vertex_V2 */,
 			);
 			path = Vertex;
 			sourceTree = "<group>";
@@ -194,49 +194,49 @@
 			path = Libraries;
 			sourceTree = "<group>";
 		};
-		77CB222F261B15940027FAF5 /* Edge V2 */ = {
+		77CB222F261B15940027FAF5 /* Edge_V2 */ = {
 			isa = PBXGroup;
 			children = (
 				77CB222B261B158D0027FAF5 /* EdgeV2.cpp */,
 				77CB222C261B158D0027FAF5 /* EdgeV2.hpp */,
 			);
-			path = "Edge V2";
+			path = Edge_V2;
 			sourceTree = "<group>";
 		};
 		77CB2231261B159C0027FAF5 /* Edge */ = {
 			isa = PBXGroup;
 			children = (
-				773FF06825CD7C790085B132 /* Edge V1 */,
-				77CB222F261B15940027FAF5 /* Edge V2 */,
+				773FF06825CD7C790085B132 /* Edge_V1 */,
+				77CB222F261B15940027FAF5 /* Edge_V2 */,
 			);
 			path = Edge;
 			sourceTree = "<group>";
 		};
-		77CB2233261B1A900027FAF5 /* Point V1 */ = {
+		77CB2233261B1A900027FAF5 /* Point_V1 */ = {
 			isa = PBXGroup;
 			children = (
 				773FF06025CD7C2A0085B132 /* Point.cpp */,
 				773FF06125CD7C2A0085B132 /* Point.hpp */,
 			);
-			path = "Point V1";
+			path = Point_V1;
 			sourceTree = "<group>";
 		};
-		77CB223C261B1BB20027FAF5 /* Vertex V1 */ = {
+		77CB223C261B1BB20027FAF5 /* Vertex_V1 */ = {
 			isa = PBXGroup;
 			children = (
 				773FF07625CD7E410085B132 /* Vertex.cpp */,
 				773FF07725CD7E410085B132 /* Vertex.hpp */,
 			);
-			path = "Vertex V1";
+			path = Vertex_V1;
 			sourceTree = "<group>";
 		};
-		77CB2242261B1BED0027FAF5 /* Vertex V2 */ = {
+		77CB2242261B1BED0027FAF5 /* Vertex_V2 */ = {
 			isa = PBXGroup;
 			children = (
 				77CB223E261B1BEA0027FAF5 /* VertexV2.cpp */,
 				77CB223F261B1BEA0027FAF5 /* VertexV2.hpp */,
 			);
-			path = "Vertex V2";
+			path = Vertex_V2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

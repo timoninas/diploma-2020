@@ -334,12 +334,12 @@ void testLogic() {
         graph.PrintVertices();
         graph.PrintEdges();
         
-        auto result = graph.SearchSkeletonV2({33, 1}, {0, 0});
-        auto skeleton = graph.GetSkeleton();
-        for (auto iter = skeleton->cbegin(); iter != skeleton->cend(); iter++) {
-            auto points = *iter;
-            std::cout << "(" << points.first.x << "; " << points.first.y << ") -- (" << points.second.x << "; " << points.second.y << ")" << std::endl;
-        }
+//        auto result = graph.SearchSkeletonV2({33, 1}, {0, 0});
+//        auto skeleton = graph.GetSkeleton();
+//        for (auto iter = skeleton->cbegin(); iter != skeleton->cend(); iter++) {
+//            auto points = *iter;
+//            std::cout << "(" << points.first.x << "; " << points.first.y << ") -- (" << points.second.x << "; " << points.second.y << ")" << std::endl;
+//        }
         
 //        graph.PrintVertices();
  
@@ -731,11 +731,37 @@ void testLogic() {
         graph.PrintVertices();
         graph.PrintEdges();
         
-        auto result = graph.SearchSkeletonV2({20, 0}, {0, 0});
+//        auto result = graph.SearchSkeletonV2({20, 0}, {0, 0});
+//        auto skeleton = graph.GetSkeleton();
+//        for (auto iter = skeleton->cbegin(); iter != skeleton->cend(); iter++) {
+//            auto points = *iter;
+//            std::cout << "(" << points.first.x << "; " << points.first.y << ") -- (" << points.second.x << "; " << points.second.y << ")" << std::endl;
+//        }
+    }
+    
+    // Egora Graph
+    {
+        SetGraph graph;
+        
+        graph.AddVertex({0, 0});
+        graph.AddVertex({5, -2});
+        graph.AddVertex({13, -10});
+        graph.AddVertex({18, 9});
+        graph.AddVertex({24, 4});
+        
+        graph.AddEdge({24, 4}, {18, 9});
+        graph.AddEdge({18, 9}, {13, -10});
+        graph.AddEdge({5, -2}, {13, -10});
+        graph.AddEdge({18, 9}, {5, -2});
+        graph.AddEdge({0, 0}, {5, -2});
+        
+        auto result = graph.SearchSkeletonV2({24, 4}, {0, 0});
         auto skeleton = graph.GetSkeleton();
         for (auto iter = skeleton->cbegin(); iter != skeleton->cend(); iter++) {
             auto points = *iter;
-            std::cout << "(" << points.first.x << "; " << points.first.y << ") -- (" << points.second.x << "; " << points.second.y << ")" << std::endl;
+            auto pointFirst = get<0>(points);
+            auto pointSecond = get<1>(points);
+            std::cout << "(" << pointFirst.x << "; " << pointFirst.y << ") -- (" << pointSecond.x << "; " << pointSecond.y << ")" << std::endl;
         }
     }
 }

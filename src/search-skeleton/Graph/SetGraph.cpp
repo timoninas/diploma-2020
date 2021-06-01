@@ -128,17 +128,32 @@ std::set<edge_t, cmpAngle> SetGraph::GetNextEdges(int vertex) const {
     return result;
 }
 
-std::shared_ptr<std::deque<std::pair<point_t, point_t>>> SetGraph::GetSkeleton() {
-    std::shared_ptr< std::deque< std::pair <point_t, point_t> > > skeleton( new std::deque< std::pair  <point_t, point_t> >() );
+std::shared_ptr<std::deque<std::tuple<point_t, point_t, int>>> SetGraph::GetSkeleton() {
+    skeleton->clear();
+    std::vector<int> uniqueEdges;
     
-    for (auto iter = edges.cbegin(); iter != edges.cend(); iter++) {
-        auto edge = *iter;
+    for (auto iter = inSkeletonVertices->cbegin(); iter != inSkeletonVertices->cend(); iter++) {
+        auto vertex = GetVertex(*iter);
         
-        if (edge.label == GraphLabels::inskeleton) {
-            skeleton->push_back(std::make_pair(edge.points.first, edge.points.second));
+        for (auto edgIter = vertex.numberEdges.cbegin(); edgIter != vertex.numberEdges.cend(); edgIter++) {
+            auto edge = GetEdge(*edgIter, vertex.numberVertex);
+            auto secondVertex = GetVertex(edge.numberVertices.second);
+            auto isAlreadyIn = false;
+            
+            for (auto uniqIter = uniqueEdges.cbegin(); uniqIter != uniqueEdges.cend(); uniqIter++) {
+                auto num = *uniqIter;
+                if (edge.numberEdge == num) {
+                    isAlreadyIn = true;
+                    break;
+                }
+            }
+            
+            if (secondVertex.label == GraphLabels::inskeleton && isAlreadyIn == false) {
+                uniqueEdges.push_back(edge.numberEdge);
+                skeleton->push_back(std::make_tuple(vertex.point, secondVertex.point, vertex.label));
+            }
         }
     }
-    
     return skeleton;
 }
 
@@ -344,6 +359,9 @@ std::shared_ptr<std::deque<int>> SetGraph::SearchSkeletonV2(const int inputVerte
         std::cout << *iter << " ";
     }
     std::cout << std::endl;
+    
+    inSkeletonVertices->clear();
+    inSkeletonVertices = resultStack;
     
     return resultStack;
 }

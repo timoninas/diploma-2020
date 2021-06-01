@@ -2,7 +2,7 @@
 #define Structs_hpp
 
 #include "Model/Vector/Vector.hpp"
-#include "Model/Edge/Edge V1/Edge.hpp"
+#include "Model/Edge/Edge_V1/Edge.hpp"
 
 #include <math.h>
 #include <stdio.h>

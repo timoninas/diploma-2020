@@ -5,7 +5,11 @@
 
 class SetGraph: public IGraph {
 public:
-    SetGraph(): graph(), vertices() { }
+    SetGraph(): graph(), vertices(), inSkeletonVertices( new std::deque<int> ), skeleton( new std::deque<std::tuple<point_t, point_t, int>> ) {
+//        inSkeletonVertices = std::make_shared<std::deque<int>>(  );
+//        skeleton = std::make_shared<std::deque<std::tuple<point_t, point_t, int>>> ( new std::deque<std::tuple<point_t, point_t, int>> );
+        
+    }
     
     SetGraph(const IGraph&);
     
@@ -27,7 +31,7 @@ public:
     
     void SearchSkeleton(int inputVertex, int outputVertex) override;
     
-    std::shared_ptr<std::deque<std::pair<point_t, point_t>>> GetSkeleton() override;
+    std::shared_ptr<std::deque<std::tuple<point_t, point_t, int>>> GetSkeleton() override;
     
     std::shared_ptr<std::deque<int>> SearchSkeletonV2(const int inputVertex, const int outputVertex) override;
     
@@ -37,6 +41,9 @@ private:
     std::vector< std::unordered_set< int > > graph;
     std::vector< vertex_v2_t > vertices;
     std::vector< edge_t > edges;
+    
+    std::shared_ptr<std::deque<int>> inSkeletonVertices;
+    std::shared_ptr<std::deque<std::tuple<point_t, point_t, int>>> skeleton;
     
     const vertex_v2_t& GetVertex(int at) override;
     
