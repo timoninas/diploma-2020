@@ -1,28 +1,26 @@
 //
-//  Edge.hpp
+//  EdgeV2.hpp
 //  search-skeleton
 //
-//  Created by Антон Тимонин on 05.02.2021.
+//  Created by Антон Тимонин on 05.04.2021.
 //
 
-#ifndef Edge_hpp
-#define Edge_hpp
+#ifndef EdgeV2_hpp
+#define EdgeV2_hpp
 
-#include "../GraphLabel/GraphLabel.hpp"
-#include "../Point/Point.hpp"
+#include "../../GraphLabel/GraphLabel.hpp"
+#include "../../Point/Point_V1/Point.hpp"
 
 #include <stdio.h>
 #include <utility>
 
-typedef struct edge {
+typedef struct edge_v2 {
     int numberEdge;
-    std::pair<point_t, point_t> points;
     std::pair<int, int> numberVertices;
     GraphLabels label;
-    edge() = delete;
-    edge(int number, point_t p1, point_t p2, int numberVertex1, int numberVertex2):
+    edge_v2() = delete;
+    edge_v2(int number, int numberVertex1, int numberVertex2):
                                             numberEdge(number),
-                                            points(std::make_pair(p1, p2)),
                                             numberVertices(std::make_pair(numberVertex1, numberVertex2)),
                                             label(GraphLabels::notvisited) { }
     
@@ -31,20 +29,24 @@ typedef struct edge {
     }
     
     bool isVisited() {
-        return label == GraphLabels::inskeleton;
+        return label == GraphLabels::visited;
     }
     
     bool isInskeleton() {
         return label == GraphLabels::inskeleton;
     }
-} edge_t;
+    
+    void swipeVertices() {
+        auto tmp = numberVertices.first;
+        numberVertices.first = numberVertices.second;
+        numberVertices.second = tmp;
+    }
+} edge_v2_t;
 
-struct cmp {
-    bool operator() (const edge_t &a, const edge_t &b) {
+struct cmp_v2 {
+    bool operator() (const edge_v2_t &a, const edge_v2_t &b) {
         return a.numberVertices.first < b.numberVertices.first || a.numberVertices.second < b.numberVertices.second;
     }
 };
 
-
-
-#endif /* Edge_hpp */
+#endif /* EdgeV2_hpp */

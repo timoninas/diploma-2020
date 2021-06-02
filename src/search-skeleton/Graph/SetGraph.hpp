@@ -5,7 +5,11 @@
 
 class SetGraph: public IGraph {
 public:
-    SetGraph(): graph(), vertices() { }
+    SetGraph(): graph(), vertices(), inSkeletonVertices( new std::deque<int> ), skeleton( new std::deque<std::tuple<point_t, point_t, int>> ) {
+//        inSkeletonVertices = std::make_shared<std::deque<int>>(  );
+//        skeleton = std::make_shared<std::deque<std::tuple<point_t, point_t, int>>> ( new std::deque<std::tuple<point_t, point_t, int>> );
+        
+    }
     
     SetGraph(const IGraph&);
     
@@ -13,30 +17,50 @@ public:
     
     int VerticesCount() const override;
     
-    void AddVertex(double x, double y) override;
+    bool AddVertex(double x, double y) override;
     
-    void AddEdge(int from, int to) override;
+    bool AddVertex(point_t p) override;
+    
+    bool AddEdge(int from, int to) override;
+    
+    bool AddEdge(point_t p1, point_t p2) override;
     
     void PrintVertices() const override;
     
+    void PrintEdges() const override;
+    
     void SearchSkeleton(int inputVertex, int outputVertex) override;
     
+    std::shared_ptr<std::deque<std::tuple<point_t, point_t, int>>> GetSkeleton() override;
     
+    std::shared_ptr<std::deque<int>> SearchSkeletonV2(const int inputVertex, const int outputVertex) override;
     
-    
+    std::shared_ptr<std::deque<int>> SearchSkeletonV2(const point_t inputPoint, const point_t outputPoint) override;
     
 private:
     std::vector< std::unordered_set< int > > graph;
-    std::vector< vertex_t > vertices;
+    std::vector< vertex_v2_t > vertices;
     std::vector< edge_t > edges;
     
-    const vertex_t& GetVertex(int at) override;
+    std::shared_ptr<std::deque<int>> inSkeletonVertices;
+    std::shared_ptr<std::deque<std::tuple<point_t, point_t, int>>> skeleton;
+    
+    const vertex_v2_t& GetVertex(int at) override;
+    
+    const edge_t& GetEdge(int at, int fromVertexNumber) override;
     
     const edge_t& GetEdge(int at) override;
     
     std::set<edge_t, cmpAngle> GetNextEdges(int vertex) const override;
     
+    std::shared_ptr<std::deque<int>> RightTraversal(const int& submittedVertexNumber, const int& outversalVertexNumber) override;
+    
     std::shared_ptr<std::deque<int>> LeftTraversalWithInitialization(const int& currentVertexNumber, const int& stopVertexNumber) override;
+    
+    int LeftTraversalWithInitializationV2(const int& submittedVertex, const int& inputVertex, const int& outputVertex) override;
+    
+    std::shared_ptr<std::deque<int>> LeftTraversalMainPartV2(const int& submittedVertexNumber) override;
+    std::shared_ptr<std::deque<int>> LeftTraversalMainPartV2(const int& submittedVertexNumber, const int& submittedEdgeNumber, const int& isSameVertexNumber) override;
     
     std::shared_ptr<std::deque<int>> LeftTraversalBuildingSkeleton(const int& currentVertexNumber) override;
     
